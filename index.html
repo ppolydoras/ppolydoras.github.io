@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavlos Polydoras – Curriculum Vitae</title>
+  <style>
+    /* Reset & base styling */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f8f9fb;
+    }
+    a { color: #0066cc; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    /* Layout containers */
+    header {
+      background: #003366;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    header p {
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0.85;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+    section {
+      margin-bottom: 50px;
+    }
+    section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+      color: #003366;
+    }
+    section h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      width: 50px;
+      background-color: #0066cc;
+    }
+    /* Summary */
+    .summary p {
+      font-size: 1rem;
+      max-width: 900px;
+    }
+    /* Experience timeline */
+    .timeline {
+      position: relative;
+      margin-left: 20px;
+      padding-left: 30px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 10px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #c0c8d1;
+    }
+    .timeline-item {
+      margin-bottom: 40px;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #0066cc;
+    }
+    .timeline-item h3 {
+      font-size: 1.2rem;
+      color: #003366;
+      margin-bottom: 4px;
+    }
+    .timeline-item h4 {
+      font-size: 0.95rem;
+      color: #555;
+      font-weight: normal;
+      margin-bottom: 8px;
+    }
+    .timeline-item p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    .timeline-item ul {
+      list-style: disc inside;
+      margin-top: 5px;
+    }
+    /* Education list */
+    .education-item {
+      margin-bottom: 25px;
+    }
+    .education-item h3 {
+      font-size: 1.1rem;
+      color: #003366;
+    }
+    .education-item h4 {
+      font-size: 0.95rem;
+      color: #555;
+      font-weight: normal;
+    }
+    /* Skills grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+    }
+    .skill-item {
+      background: #eaf1f8;
+      padding: 8px 12px;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: #003366;
+    }
+    /* Contact section */
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .contact-info a {
+      color: #0066cc;
+    }
+    /* Footer */
+    footer {
+      background: #f0f3f6;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pavlos Polydoras</h1>
+    <p>Technology leader driving digital transformation and AI‑powered data services</p>
+  </header>
+  <div class="container">
+    <section id="summary" class="summary">
+      <h2>Profile</h2>
+      <p>
+        Technology executive with <strong>20&nbsp;years of experience</strong> delivering digital‑transformation initiatives
+        and secure, scalable solutions across research, public‑sector and enterprise environments. I combine
+        deep software‑engineering expertise with strategic vision, building and guiding teams to design,
+        implement and deploy high‑impact systems. Adept at bridging technical and business domains,
+        I create collaborative environments where engineers thrive and clients receive data‑driven innovations.
+      </p>
+    </section>
+
+    <section id="experience">
+      <h2>Professional Experience</h2>
+      <div class="timeline">
+        <!-- RAW Labs -->
+        <div class="timeline-item">
+          <h3>VP of Engineering &amp; General Manager, Greece – RAW Labs</h3>
+          <h4>Jul&nbsp;2021 – Present · Athens, Greece</h4>
+          <p>
+            Lead the design and implementation of chat and analytics services built on client data using
+            <strong>MXCP</strong>, RAW Labs’ enterprise framework for building AI‑enabled data services. Guide projects
+            from proof of concept through business proposals, statements of work and production deployment.
+          </p>
+          <ul>
+            <li>Architect AI models and agent‑based applications, aligning technical execution with business goals.</li>
+            <li>Manage cross‑functional engineering teams and serve as primary liaison with customers, ensuring
+              requirements are translated into innovative solutions.</li>
+            <li>Develop go‑to‑market strategies and craft proposals that showcase the value of MXCP‑based services.</li>
+          </ul>
+        </div>
+        <!-- Palowise CTO -->
+        <div class="timeline-item">
+          <h3>Chief Technology Officer – Palowise</h3>
+          <h4>Jan&nbsp;2019 – Jun&nbsp;2021 · Athens, Greece (On‑site)</h4>
+          <p>
+            Directed all technical operations for Palowise, a SaaS platform delivering real‑time social and web
+            analytics. Oversaw product strategy and engineering execution during the company’s rebrand and
+            expansion from PaloPro into Palowise.
+          </p>
+          <ul>
+            <li>Designed scalable data‑ingestion pipelines and multilingual NLP models to aggregate news and
+              social signals from European markets.</li>
+            <li>Led development of analytics dashboards that provided customized insights to enterprise clients.</li>
+            <li>Built and mentored engineering teams, collaborating with leadership to align technology roadmap
+              with business objectives.</li>
+          </ul>
+        </div>
+        <!-- Benefits Science -->
+        <div class="timeline-item">
+          <h3>Senior Software Architect – Benefits Science Technologies</h3>
+          <h4>Apr&nbsp;2014 – Dec&nbsp;2018 · Halandri, Attica, Greece</h4>
+          <p>
+            Served as technical lead for the company’s analytics platform that helps employers and consultants
+            manage employee benefits. Responsible for designing and implementing large‑scale data and ETL systems
+            and automating client onboarding.
+          </p>
+          <ul>
+            <li>Led design &amp; implementation of a distributed Data Lake and Big Data ETL services.</li>
+            <li>Headed new client development, tailoring ETL pipelines to client‑specific data formats.</li>
+            <li>Directed automation initiatives to streamline analytics workflows and reduce time to insight.</li>
+            <li>Utilized a technology stack including Java/Scala, Apache Spark, Databricks, and the AWS ecosystem
+              (EC2, Lambda, Athena, EMR/Spark, QuickSight, Data Pipeline, Glue, S3, RDS/MySQL, Redshift, KMS,
+              IAM) plus Alfresco Activiti BPM.</li>
+          </ul>
+        </div>
+        <!-- UBITECH -->
+        <div class="timeline-item">
+          <h3>Senior Software Architect – UBITECH</h3>
+          <h4>Sep&nbsp;2010 – Mar&nbsp;2014 · Athens, Greece</h4>
+          <p>
+            Led development of secure, high‑availability platforms for government clients, focusing on
+            cross‑border civil‑status data exchange and document management projects.
+          </p>
+          <ul>
+            <li>Architected and implemented core software, security and infrastructure for RENAPER (Argentina’s
+              civil‑status registry) and ICCS‑CIEC data exchange initiatives.</li>
+            <li>Designed PKI‑based authentication and encryption schemes, ensuring compliance with international
+              standards for civil‑status data.</li>
+            <li>Worked with JavaEE, cryptography &amp; PKI frameworks, secure communication protocols,
+              authentication/authorization services, EJBCA and jBPM.</li>
+          </ul>
+        </div>
+        <!-- Hellenic Army -->
+        <div class="timeline-item">
+          <h3>Software Developer – Information Systems Support Center, Hellenic Army</h3>
+          <h4>Mar&nbsp;2010 – Nov&nbsp;2010 · Athens, Greece</h4>
+          <p>
+            Contributed to the design, implementation and documentation of information systems as part of
+            national service in the Hellenic Army.
+          </p>
+        </div>
+        <!-- University of Athens -->
+        <div class="timeline-item">
+          <h3>Software Developer &amp; Researcher – University of Athens</h3>
+          <h4>Nov&nbsp;2005 – Feb&nbsp;2010 · Athens, Greece</h4>
+          <p>
+            Worked as systems architect and developer on multiple EU research projects covering
+            information retrieval, service composition, query processing and optimization.
+          </p>
+          <ul>
+            <li>Participated in research initiatives such as D4Science, D4Science‑II, Health‑e‑Child, DILIGENT and
+              DL.org, contributing to service networks and digital libraries on distributed infrastructures.</li>
+          </ul>
+        </div>
+        <!-- Synastria Technologies -->
+        <div class="timeline-item">
+          <h3>Software Developer – Synastria Technologies</h3>
+          <h4>Jan&nbsp;2007 – Jan&nbsp;2008 · Athens, Greece</h4>
+          <p>
+            Designed and implemented the BIRonet Virtual Office web application using JavaEE (Servlets, JSP), JMS,
+            Hibernate, MySQL and VMWare technologies.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>Education</h2>
+      <div class="education-item">
+        <h3>M.Sc. in Information Technology</h3>
+        <h4>National and Kapodistrian University of Athens (2004–2009)</h4>
+        <p>Focused on information systems, data management and distributed computing.</p>
+      </div>
+      <div class="education-item">
+        <h3>B.Sc. in Computer Science</h3>
+        <h4>National and Kapodistrian University of Athens (1999–2004)</h4>
+        <p>Completed thesis on dynamic composition of MPMD programs, published in the university’s “Best Bachelor – Master Theses” magazine.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill-item">Digital transformation &amp; strategy</div>
+        <div class="skill-item">AI &amp; machine learning</div>
+        <div class="skill-item">Data architecture &amp; integration</div>
+        <div class="skill-item">Distributed systems</div>
+        <div class="skill-item">Cloud platforms (AWS, Azure)</div>
+        <div class="skill-item">Big data &amp; ETL (Spark, Databricks)</div>
+        <div class="skill-item">Security &amp; PKI</div>
+        <div class="skill-item">Team leadership &amp; mentoring</div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <div class="contact-info">
+        <div><strong>Location:</strong> Athens, Greece</div>
+        <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ppolydoras/">linkedin.com/in/ppolydoras</a></div>
+        <!-- Email is intentionally omitted to respect privacy -->
+      </div>
+    </section>
+  </div>
+  <footer>
+    &copy; 2025 Pavlos Polydoras. This site was generated as a professional résumé. All rights reserved.
+  </footer>
+</body>
+</html>
