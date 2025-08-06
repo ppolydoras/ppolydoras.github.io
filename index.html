@@ -682,6 +682,43 @@
       border-top: 1px solid rgba(255,255,255,0.1);
     }
 
+    /* PDF Print Styles */
+    @media print {
+      .navbar,
+      .progress-bar,
+      .scroll-indicator,
+      .hero-buttons {
+        display: none !important;
+      }
+      .hero {
+        min-height: auto;
+        padding: 20px;
+      }
+      .container {
+        padding: 20px 0;
+      }
+      section {
+        margin-bottom: 30px;
+        page-break-inside: avoid;
+      }
+      .timeline-item {
+        page-break-inside: avoid;
+        margin-bottom: 25px;
+      }
+      .about .avatar {
+        width: 150px;
+        height: 150px;
+        flex: 0 0 150px;
+      }
+      body {
+        background: white !important;
+        color: #333 !important;
+      }
+      .background-animation {
+        display: none !important;
+      }
+    }
+
     /* Mobile Responsiveness */
     @media (max-width: 768px) {
       .nav-links {
@@ -859,6 +896,14 @@
             <li>Built analytics dashboards providing customized insights.</li>
             <li>Mentored engineering teams and aligned technology roadmap with business goals.</li>
           </ul>
+          <div class="tech-stack">
+            <strong>🔧 Key Technologies:</strong> Python, Scala, Apache Spark, Elasticsearch, Apache Kafka, React, Node.js, PostgreSQL, Docker, Kubernetes, AWS (EC2, RDS, ElastiCache)
+          </div>
+          <div class="key-projects">
+            <strong>🚀 Key Projects:</strong>
+            <span class="project-tag">palo.gr PaloPro Analytics Platform</span>
+            <span class="project-tag">Cosmote Social Observability Platform</span>
+          </div>
         </div>
         <div class="timeline-item">
           <h3>Senior Software Architect – Benefits Science</h3>
@@ -869,9 +914,11 @@
           <ul>
             <li>Designed &amp; implemented a distributed Data Lake and Big Data ETL services.</li>
             <li>Directed new client development and automation initiatives.</li>
-            <li>Leveraged Java/Scala, Apache Spark, Databricks and AWS (EC2, Lambda, EMR/Spark, Athena, QuickSight,
-              Data Pipeline, Glue, S3, RDS, Redshift, KMS, IAM).</li>
+            <li>Built scalable analytics infrastructure serving enterprise clients.</li>
           </ul>
+          <div class="tech-stack">
+            <strong>🔧 Key Technologies:</strong> Java, Scala, Apache Spark, Databricks, AWS (EC2, Lambda, EMR, S3, RDS, Redshift, Athena, QuickSight, Glue, Data Pipeline, KMS, IAM), PostgreSQL, Python
+          </div>
         </div>
         <div class="timeline-item">
           <h3>Senior Software Architect – UBITECH</h3>
@@ -882,8 +929,16 @@
           <ul>
             <li>Led core software, security and infrastructure design for RENAPER and ICCS‑CIEC initiatives.</li>
             <li>Implemented PKI‑based authentication and encryption schemes.</li>
-            <li>Worked extensively with JavaEE, cryptography, EJBCA and jBPM.</li>
+            <li>Designed enterprise-grade security solutions for government systems.</li>
           </ul>
+          <div class="tech-stack">
+            <strong>🔧 Key Technologies:</strong> JavaEE, EJBCA, jBPM, PKI, Cryptography, Oracle Database, JBoss, Spring Framework, Web Services (SOAP/REST), Apache Tomcat
+          </div>
+          <div class="key-projects">
+            <strong>🚀 Key Projects:</strong>
+            <span class="project-tag">RENAPER Initiative</span>
+            <span class="project-tag">ICCS-CIEC Data Exchange</span>
+          </div>
         </div>
         <div class="timeline-item">
           <h3>Software Developer – Hellenic Army</h3>
@@ -892,6 +947,9 @@
             Designed and implemented software solutions and compiled technical reports for critical
             information systems during national service.
           </p>
+          <div class="tech-stack">
+            <strong>🔧 Key Technologies:</strong> Java, C#, .NET Framework, SQL Server, Oracle Database, System Analysis & Design
+          </div>
         </div>
         <div class="timeline-item">
           <h3>Software Developer &amp; Researcher – University of Athens</h3>
@@ -903,13 +961,30 @@
           <ul>
             <li>Contributed to D4Science, D4Science‑II, Health‑e‑Child, DILIGENT and DL.org initiatives.</li>
           </ul>
+          <div class="tech-stack">
+            <strong>🔧 Key Technologies:</strong> Java, XML, Web Services (SOAP), Grid Computing, Information Retrieval Systems, PostgreSQL, Apache Axis, Eclipse RCP
+          </div>
+          <div class="key-projects">
+            <strong>🚀 Key Projects:</strong>
+            <span class="project-tag">D4Science Platform</span>
+            <span class="project-tag">Health-e-Child</span>
+            <span class="project-tag">DILIGENT</span>
+            <span class="project-tag">DL.org</span>
+          </div>
         </div>
         <div class="timeline-item">
           <h3>Software Developer – Synastria Technologies</h3>
           <h4>Jan&nbsp;2007 – Jan&nbsp;2008</h4>
           <p>
-            Developed BIRonet Virtual Office web application using JavaEE, JMS, Hibernate, MySQL and VMWare technologies.
+            Developed BIRonet Virtual Office web application for business process management and collaboration.
           </p>
+          <div class="tech-stack">
+            <strong>🔧 Key Technologies:</strong> JavaEE, JMS, Hibernate, MySQL, VMWare, Apache Tomcat, JSF, Spring Framework
+          </div>
+          <div class="key-projects">
+            <strong>🚀 Key Projects:</strong>
+            <span class="project-tag">BIRonet Virtual Office</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1164,19 +1239,71 @@
       document.querySelector('.contact-form form').reset();
     }
 
-    // Download CV function
-    function downloadCV() {
-      // For now, this will generate a simple alert
-      // You can replace this with actual PDF generation or link to a hosted PDF
-      alert('CV download feature ready! Please add your PDF file to the project and update this function.');
-      
-      // Example of how to trigger download when you have a PDF:
-      // const link = document.createElement('a');
-      // link.href = 'assets/Pavlos_Polydoras_CV.pdf';
-      // link.download = 'Pavlos_Polydoras_CV.pdf';
-      // document.body.appendChild(link);
-      // link.click();
-      // document.body.removeChild(link);
+    // Download CV function - Generate PDF from current page
+    async function downloadCV() {
+      try {
+        // Hide navigation and scroll indicator for clean PDF
+        const navbar = document.querySelector('.navbar');
+        const progressBar = document.querySelector('.progress-bar');
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        const heroButtons = document.querySelector('.hero-buttons');
+        
+        navbar.style.display = 'none';
+        progressBar.style.display = 'none';
+        scrollIndicator.style.display = 'none';
+        heroButtons.style.display = 'none';
+        
+        // Import html2pdf library dynamically
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+        document.head.appendChild(script);
+        
+        await new Promise(resolve => script.onload = resolve);
+        
+        // Configure PDF options
+        const options = {
+          margin: [0.5, 0.5, 0.5, 0.5],
+          filename: 'Pavlos_Polydoras_CV.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { 
+            scale: 2,
+            useCORS: true,
+            letterRendering: true,
+            allowTaint: false
+          },
+          jsPDF: { 
+            unit: 'in', 
+            format: 'a4', 
+            orientation: 'portrait',
+            compress: true
+          },
+          pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+        };
+        
+        // Generate and download PDF
+        await html2pdf().set(options).from(document.body).save();
+        
+        // Restore hidden elements
+        navbar.style.display = '';
+        progressBar.style.display = '';
+        scrollIndicator.style.display = '';
+        heroButtons.style.display = '';
+        
+      } catch (error) {
+        console.error('PDF generation failed:', error);
+        alert('PDF generation failed. Please try again or contact support.');
+        
+        // Restore hidden elements in case of error
+        const navbar = document.querySelector('.navbar');
+        const progressBar = document.querySelector('.progress-bar');
+        const scrollIndicator = document.querySelector('.scroll-indicator');
+        const heroButtons = document.querySelector('.hero-buttons');
+        
+        if (navbar) navbar.style.display = '';
+        if (progressBar) progressBar.style.display = '';
+        if (scrollIndicator) scrollIndicator.style.display = '';
+        if (heroButtons) heroButtons.style.display = '';
+      }
     }
 
     // Initialize particles and animations
