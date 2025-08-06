@@ -1471,7 +1471,7 @@
       document.querySelector('.contact-form form').reset();
     }
 
-    // Download CV function - Generate PDF from current page
+    // Download CV function - Generate PDF with hardcoded content to ensure it works
     async function downloadCV() {
       try {
         // Import html2pdf library dynamically
@@ -1481,239 +1481,192 @@
         
         await new Promise(resolve => script.onload = resolve);
         
-        // Create a temporary container with simplified content
+        // Create a simple, reliable PDF content
         const tempContainer = document.createElement('div');
         tempContainer.style.cssText = `
           background: white;
           color: #333;
           font-family: Arial, sans-serif;
           padding: 20px;
-          line-height: 1.3;
+          line-height: 1.4;
           font-size: 11px;
           max-width: 750px;
           margin: 0 auto;
         `;
         
-        // Copy main content sections
-        const hero = document.querySelector('.hero');
-        const about = document.querySelector('#about');
-        const experience = document.querySelector('#experience');
-        const skills = document.querySelector('#skills');
-        const expertise = document.querySelector('#expertise');
-        const education = document.querySelector('#education');
-        const languages = document.querySelector('#languages');
-        const contact = document.querySelector('#contact');
+        // Get profile image
+        const profileImg = document.querySelector('.avatar');
         
-        // Add hero with photo
-        if (hero) {
-          const heroDiv = document.createElement('div');
-          const profileImg = document.querySelector('.avatar');
-          
-          heroDiv.innerHTML = `
-            <div style="display: flex; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #0ba5ec; padding-bottom: 15px;">
-              <div style="flex: 0 0 100px; margin-right: 20px;">
-                ${profileImg ? `<img src="${profileImg.src}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #0ba5ec;">` : ''}
-              </div>
-              <div style="flex: 1;">
-                <h1 style="font-size: 22px; color: #333; margin: 0 0 6px 0; font-weight: bold;">Pavlos Polydoras</h1>
-                <h2 style="font-size: 14px; color: #0ba5ec; margin: 0 0 8px 0; font-weight: normal;">Digital Transformation & AI-Driven Data Leader</h2>
-                <p style="font-size: 10px; color: #333; margin: 0 0 8px 0; line-height: 1.4;">
-                  Executive technology leader with 20 years' experience delivering secure, scalable systems across research, government and enterprise sectors. Passionate about harnessing data and artificial intelligence to unlock new possibilities.
-                </p>
-                <div style="font-size: 9px; color: #666;">
-                  <div>📧 p.polydoras@yahoo.gr</div>
-                  <div>📍 Athens, Greece</div>
-                  <div>💼 LinkedIn: linkedin.com/in/ppolydoras</div>
-                </div>
+        tempContainer.innerHTML = `
+          <!-- Header with Photo -->
+          <div style="display: flex; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #0ba5ec; padding-bottom: 15px;">
+            <div style="flex: 0 0 100px; margin-right: 20px;">
+              ${profileImg ? `<img src="${profileImg.src}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #0ba5ec;">` : ''}
+            </div>
+            <div style="flex: 1;">
+              <h1 style="font-size: 22px; color: #333; margin: 0 0 6px 0; font-weight: bold;">Pavlos Polydoras</h1>
+              <h2 style="font-size: 14px; color: #0ba5ec; margin: 0 0 8px 0; font-weight: normal;">Digital Transformation & AI-Driven Data Leader</h2>
+              <p style="font-size: 10px; color: #333; margin: 0 0 8px 0; line-height: 1.4;">
+                Executive technology leader with 20 years' experience delivering secure, scalable systems across research, government and enterprise sectors. Passionate about harnessing data and artificial intelligence to unlock new possibilities.
+              </p>
+              <div style="font-size: 9px; color: #666;">
+                <div>📧 p.polydoras@yahoo.gr</div>
+                <div>📍 Athens, Greece</div>
+                <div>💼 LinkedIn: linkedin.com/in/ppolydoras</div>
               </div>
             </div>
-          `;
-          tempContainer.appendChild(heroDiv);
-        }
-        
-        // Helper function to create expanded sections for 2-page layout
-        function addExpandedSection(originalSection, title, isSpecial = false) {
-          if (!originalSection) return;
-          
-          const sectionDiv = document.createElement('div');
-          sectionDiv.style.cssText = 'margin-bottom: 18px; page-break-inside: avoid;';
-          
-          const titleDiv = document.createElement('h3');
-          titleDiv.style.cssText = 'font-size: 13px; color: #0ba5ec; margin: 0 0 10px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;';
-          titleDiv.textContent = title;
-          sectionDiv.appendChild(titleDiv);
-          
-          if (title === 'About') {
-            const about = originalSection.querySelector('.description p');
-            if (about) {
-              const p = document.createElement('p');
-              p.style.cssText = 'font-size: 10px; margin: 0 0 12px 0; line-height: 1.4; text-align: justify;';
-              p.textContent = about.textContent;
-              sectionDiv.appendChild(p);
-            }
-          }
-          
-          else if (title === 'Experience') {
-            const timelineItems = originalSection.querySelectorAll('.timeline-item');
-            timelineItems.forEach((item, index) => {
-              const itemDiv = document.createElement('div');
-              itemDiv.style.cssText = 'margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px; page-break-inside: avoid;';
-              
-              const h3 = item.querySelector('h3');
-              const h4 = item.querySelector('h4');
-              const p = item.querySelector('p');
-              const ul = item.querySelector('ul');
-              const techStack = item.querySelector('.tech-stack');
-              const projects = item.querySelector('.key-projects');
-              
-              if (h3) {
-                const title = document.createElement('div');
-                title.style.cssText = 'font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;';
-                title.textContent = h3.textContent;
-                itemDiv.appendChild(title);
-              }
-              
-              if (h4) {
-                const period = document.createElement('div');
-                period.style.cssText = 'font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;';
-                period.textContent = h4.textContent.replace('🕘', '').trim();
-                itemDiv.appendChild(period);
-              }
-              
-              if (p) {
-                const desc = document.createElement('div');
-                desc.style.cssText = 'font-size: 9px; margin-bottom: 5px; line-height: 1.3;';
-                desc.textContent = p.textContent;
-                itemDiv.appendChild(desc);
-              }
-              
-              if (ul) {
-                const bullets = ul.querySelectorAll('li');
-                if (bullets.length > 0) {
-                  const ulDiv = document.createElement('div');
-                  ulDiv.style.cssText = 'margin-bottom: 5px;';
-                  bullets.forEach(li => {
-                    const bullet = document.createElement('div');
-                    bullet.style.cssText = 'font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;';
-                    bullet.innerHTML = `<span style="position: absolute; left: 0;">•</span>${li.textContent}`;
-                    ulDiv.appendChild(bullet);
-                  });
-                  itemDiv.appendChild(ulDiv);
-                }
-              }
-              
-              if (techStack) {
-                const tech = document.createElement('div');
-                tech.style.cssText = 'font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;';
-                tech.textContent = techStack.textContent.replace('🔧 Key Technologies:', 'Technologies:');
-                itemDiv.appendChild(tech);
-              }
-              
-              if (projects) {
-                const proj = document.createElement('div');
-                proj.style.cssText = 'font-size: 8px; color: #0ba5ec; font-weight: 500;';
-                proj.textContent = projects.textContent.replace('🚀 Key Projects:', 'Key Projects:');
-                itemDiv.appendChild(proj);
-              }
-              
-              sectionDiv.appendChild(itemDiv);
-              
-              // Add page break after 3rd position for better layout
-              if (index === 2) {
-                const pageBreak = document.createElement('div');
-                pageBreak.style.cssText = 'page-break-after: always;';
-                sectionDiv.appendChild(pageBreak);
-              }
-            });
-          }
-          
-          else if (title === 'Skills') {
-            const skills = originalSection.querySelectorAll('.skill span');
-            if (skills.length > 0) {
-              const skillsGrid = document.createElement('div');
-              skillsGrid.style.cssText = 'display: grid; grid-template-columns: 1fr 1fr; gap: 8px;';
-              
-              Array.from(skills).forEach(skill => {
-                const skillDiv = document.createElement('div');
-                skillDiv.style.cssText = 'font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;';
-                skillDiv.textContent = skill.textContent.trim();
-                skillsGrid.appendChild(skillDiv);
-              });
-              
-              sectionDiv.appendChild(skillsGrid);
-            }
-          }
-          
-          else if (title === 'Technical Expertise') {
-            const categories = originalSection.querySelectorAll('.expertise-category');
-            categories.forEach(category => {
-              const catDiv = document.createElement('div');
-              catDiv.style.cssText = 'margin-bottom: 8px;';
-              
-              const catTitle = category.querySelector('h3');
-              if (catTitle) {
-                const titleDiv = document.createElement('div');
-                titleDiv.style.cssText = 'font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #0ba5ec;';
-                titleDiv.textContent = catTitle.textContent.replace(/[🔧⚡🛡️📊]/g, '').trim();
-                catDiv.appendChild(titleDiv);
-              }
-              
-              const techItems = category.querySelectorAll('.tech-item');
-              if (techItems.length > 0) {
-                const techText = Array.from(techItems).map(item => item.textContent.trim()).join(', ');
-                const techDiv = document.createElement('div');
-                techDiv.style.cssText = 'font-size: 8px; line-height: 1.3; color: #555;';
-                techDiv.textContent = techText;
-                catDiv.appendChild(techDiv);
-              }
-              
-              sectionDiv.appendChild(catDiv);
-            });
-          }
-          
-          else if (title === 'Education') {
-            const eduItems = originalSection.querySelectorAll('.education-item');
-            eduItems.forEach(item => {
-              const h3 = item.querySelector('h3');
-              const h4 = item.querySelector('h4');
-              if (h3 && h4) {
-                const eduDiv = document.createElement('div');
-                eduDiv.style.cssText = 'font-size: 10px; margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-radius: 4px;';
-                eduDiv.innerHTML = `<strong style="color: #0ba5ec;">${h3.textContent.replace('🎓', '').trim()}</strong><br><span style="font-size: 9px; color: #666;">${h4.textContent}</span>`;
-                sectionDiv.appendChild(eduDiv);
-              }
-            });
-          }
-          
-          else if (title === 'Languages') {
-            const langItems = originalSection.querySelectorAll('.language-item');
-            const langGrid = document.createElement('div');
-            langGrid.style.cssText = 'display: grid; grid-template-columns: 1fr 1fr; gap: 8px;';
+          </div>
+
+          <!-- About -->
+          <div style="margin-bottom: 18px;">
+            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 10px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">About</h3>
+            <p style="font-size: 10px; margin: 0 0 12px 0; line-height: 1.4; text-align: justify;">
+              I'm a software architect turned technology executive who pairs deep engineering expertise with a strategic outlook. Over the past two decades I've led high‑impact projects that span cloud infrastructure, distributed data systems and AI‑powered analytics. I thrive on building collaborative teams, mentoring engineers and translating complex requirements into innovative products that advance digital transformation.
+            </p>
+          </div>
+
+          <!-- Experience -->
+          <div style="margin-bottom: 18px;">
+            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 10px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">Experience</h3>
             
-            Array.from(langItems).forEach(item => {
-              const name = item.querySelector('.language-name');
-              const level = item.querySelector('.language-level');
-              if (name && level) {
-                const langDiv = document.createElement('div');
-                langDiv.style.cssText = 'font-size: 10px; padding: 6px; background: #f0f8ff; border-radius: 4px; text-align: center;';
-                langDiv.innerHTML = `<strong style="color: #0ba5ec;">${name.textContent}</strong><br><span style="font-size: 8px; color: #666;">${level.textContent}</span>`;
-                langGrid.appendChild(langDiv);
-              }
-            });
+            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
+              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">VP of Engineering & General Manager, Greece – RAW Labs</div>
+              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Jul 2021 – Present</div>
+              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Lead creation of chat and analytics services built on client data using MXCP, RAW Labs' MCP framework. Guide projects from POC through SOW, design, implementation and delivery.</div>
+              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Architect AI models and agent‑based applications aligned with customer objectives.</div>
+              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Coordinate engineering teams and manage stakeholder relationships.</div>
+              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Develop business proposals and go‑to‑market strategies for MXCP‑based services.</div>
+              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: LangChain, MCP/MXCP, Python, Scala, Java, AWS (EC2, S3, Lambda, RDS), Data Connectors, OpenAI APIs, Vector Databases</div>
+              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: Vodafone Site Ranking System, Swiss Statistics Office Smart Search, UAE National Economic Register</div>
+            </div>
+
+            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
+              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Chief Technology Officer – Palowise</div>
+              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Jan 2019 – Jun 2021</div>
+              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Oversaw all technical operations for Palowise, a SaaS platform delivering real‑time social and web analytics. Led the transition from PaloPro to Palowise, expanding the platform's capabilities and market reach.</div>
+              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Designed scalable ingestion pipelines and multilingual NLP models.</div>
+              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Built analytics dashboards providing customized insights.</div>
+              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Mentored engineering teams and aligned technology roadmap with business goals.</div>
+              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: Python, Scala, Apache Spark, Elasticsearch, Apache Kafka, React, Node.js, PostgreSQL, Docker, Kubernetes, AWS (EC2, RDS, ElastiCache)</div>
+              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: palo.gr PaloPro Analytics Platform, Cosmote Social Observability Platform</div>
+            </div>
+
+            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
+              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Senior Software Architect – Benefits Science</div>
+              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Apr 2014 – Dec 2018</div>
+              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Technical lead for analytics platform enabling employers and consultants to optimize benefits plans.</div>
+              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Designed & implemented a distributed Data Lake and Big Data ETL services.</div>
+              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Directed new client development and automation initiatives.</div>
+              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Built scalable analytics infrastructure serving enterprise clients.</div>
+              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: Java, Scala, Apache Spark, Databricks, AWS (EC2, Lambda, EMR, S3, RDS, Redshift, Athena, QuickSight, Glue, Data Pipeline, KMS, IAM), PostgreSQL, Python</div>
+            </div>
+
+            <div style="page-break-after: always;"></div>
+
+            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
+              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Senior Software Architect – UBITECH</div>
+              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Sep 2010 – Mar 2014</div>
+              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Developed secure, high‑availability platforms for cross‑border civil‑status data exchange projects.</div>
+              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Led core software, security and infrastructure design for RENAPER and ICCS‑CIEC initiatives.</div>
+              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Implemented PKI‑based authentication and encryption schemes.</div>
+              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Designed enterprise-grade security solutions for government systems.</div>
+              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: JavaEE, EJBCA, jBPM, PKI, Cryptography, Oracle Database, JBoss, Spring Framework, Web Services (SOAP/REST), Apache Tomcat</div>
+              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: RENAPER Initiative, ICCS-CIEC Data Exchange</div>
+            </div>
+
+            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
+              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Software Developer – Hellenic Army</div>
+              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Mar 2010 – Nov 2010</div>
+              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Designed and implemented software solutions and compiled technical reports for critical information systems during national service.</div>
+              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: Java, C#, .NET Framework, SQL Server, Oracle Database, System Analysis & Design</div>
+            </div>
+
+            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
+              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Software Developer & Researcher – University of Athens</div>
+              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Nov 2005 – Feb 2010</div>
+              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Systems architect and developer on EU research projects in information retrieval, service composition and query optimization.</div>
+              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Contributed to D4Science, D4Science‑II, Health‑e‑Child, DILIGENT and DL.org initiatives.</div>
+              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: Java, XML, Web Services (SOAP), Grid Computing, Information Retrieval Systems, PostgreSQL, Apache Axis, Eclipse RCP</div>
+              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: D4Science Platform, Health-e-Child, DILIGENT, DL.org</div>
+            </div>
+
+            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
+              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Software Developer – Synastria Technologies</div>
+              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Jan 2007 – Jan 2008</div>
+              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Developed BIRonet Virtual Office web application for business process management and collaboration.</div>
+              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: JavaEE, JMS, Hibernate, MySQL, VMWare, Apache Tomcat, JSF, Spring Framework</div>
+              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: BIRonet Virtual Office</div>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div style="margin-bottom: 18px;">
+            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 10px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">Skills</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">AI & Machine Learning</div>
+              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Digital Transformation Strategy</div>
+              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Data Architecture & Integration</div>
+              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Distributed Systems</div>
+              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Cloud Platforms & Microservices</div>
+              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Big Data & ETL</div>
+              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Security & PKI</div>
+              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Team Leadership & Mentoring</div>
+            </div>
+          </div>
+
+          <!-- Technical Expertise -->
+          <div style="margin-bottom: 18px;">
+            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 10px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">Technical Expertise</h3>
             
-            sectionDiv.appendChild(langGrid);
-          }
-          
-          tempContainer.appendChild(sectionDiv);
-        }
-        
-        // Add all sections in expanded 2-page format
-        addExpandedSection(about, 'About');
-        addExpandedSection(experience, 'Experience');
-        addExpandedSection(skills, 'Skills');
-        addExpandedSection(expertise, 'Technical Expertise');
-        addExpandedSection(education, 'Education');
-        addExpandedSection(languages, 'Languages');
+            <div style="margin-bottom: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #0ba5ec;">Cloud & Infrastructure</div>
+              <div style="font-size: 8px; line-height: 1.3; color: #555;">AWS (Expert Level), EC2, S3, Lambda, RDS, Redshift, EMR, Glue, IAM, KMS</div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #0ba5ec;">Programming & Frameworks</div>
+              <div style="font-size: 8px; line-height: 1.3; color: #555;">Python, Scala, Java, LangChain, OpenAI APIs, Apache Spark, JavaEE, Spring, React, Node.js</div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #0ba5ec;">Data & AI</div>
+              <div style="font-size: 8px; line-height: 1.3; color: #555;">Vector Databases, ETL Pipelines, ML/AI Integration, Data Lake Architecture, Real-time Analytics</div>
+            </div>
+            
+            <div style="margin-bottom: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #0ba5ec;">Security & Enterprise</div>
+              <div style="font-size: 8px; line-height: 1.3; color: #555;">PKI, Cryptography, EJBCA, jBPM, Enterprise Architecture, Microservices, System Integration</div>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div style="margin-bottom: 18px;">
+            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 10px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">Education</h3>
+            <div style="font-size: 10px; margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-radius: 4px;">
+              <strong style="color: #0ba5ec;">M.Sc. in Information Technology</strong><br>
+              <span style="font-size: 9px; color: #666;">National & Kapodistrian University of Athens · 2004–2009</span>
+            </div>
+            <div style="font-size: 10px; margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-radius: 4px;">
+              <strong style="color: #0ba5ec;">B.Sc. in Computer Science</strong><br>
+              <span style="font-size: 9px; color: #666;">National & Kapodistrian University of Athens · 1999–2004</span>
+            </div>
+          </div>
+
+          <!-- Languages -->
+          <div style="margin-bottom: 18px;">
+            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 10px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">Languages</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <div style="font-size: 10px; padding: 6px; background: #f0f8ff; border-radius: 4px; text-align: center;">
+                <strong style="color: #0ba5ec;">Greek</strong><br>
+                <span style="font-size: 8px; color: #666;">Native</span>
+              </div>
+              <div style="font-size: 10px; padding: 6px; background: #f0f8ff; border-radius: 4px; text-align: center;">
+                <strong style="color: #0ba5ec;">English</strong><br>
+                <span style="font-size: 8px; color: #666;">Fluent</span>
+              </div>
+            </div>
+          </div>
+        `;
         
         // Configure PDF options for 2-page layout
         const options = {
@@ -1725,19 +1678,13 @@
             useCORS: true,
             letterRendering: true,
             allowTaint: false,
-            backgroundColor: '#ffffff',
-            width: 850,
-            height: 1200
+            backgroundColor: '#ffffff'
           },
           jsPDF: { 
             unit: 'in', 
             format: 'a4', 
             orientation: 'portrait',
             compress: true
-          },
-          pagebreak: { 
-            mode: ['css', 'legacy'],
-            before: '.page-break'
           }
         };
         
