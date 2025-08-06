@@ -322,20 +322,106 @@
       font-size: 1.1rem;
     }
 
-    /* Timeline */
+    /* Time axis label - Making the temporal nature explicit */
+    .time-axis-label {
+      text-align: center;
+      margin-bottom: 30px;
+      opacity: 0.8;
+    }
+    
+    .time-label {
+      display: block;
+      font-size: 1rem;
+      color: var(--primary);
+      font-weight: 500;
+      margin-bottom: 5px;
+      font-style: italic;
+    }
+    
+    .time-subtitle {
+      display: block;
+      font-size: 0.8rem;
+      color: rgba(245, 245, 245, 0.6);
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    /* Timeline - Inspired by Carlo Rovelli's conception of time */
     .timeline {
       position: relative;
       padding-left: 50px;
     }
+    
+    /* The flowing river of time - Rovelli's "Order of Time" */
     .timeline::before {
       content: '';
       position: absolute;
-      left: 20px;
+      left: 18px;
       top: 0;
       bottom: 0;
-      width: 3px;
-      background: linear-gradient(180deg, var(--primary), var(--accent));
-      border-radius: 2px;
+      width: 6px;
+      background: linear-gradient(180deg, 
+        var(--primary) 0%,
+        var(--accent) 25%, 
+        #ff6b6b 50%,
+        #4ecdc4 75%,
+        #9b59b6 100%);
+      border-radius: 3px;
+      animation: timeFlow 8s ease-in-out infinite;
+      box-shadow: 0 0 20px rgba(11, 165, 236, 0.3);
+    }
+    
+    /* Time flow animation - the emergent nature of temporal becoming */
+    @keyframes timeFlow {
+      0%, 100% {
+        background: linear-gradient(180deg, 
+          var(--primary) 0%,
+          var(--accent) 25%, 
+          #ff6b6b 50%,
+          #4ecdc4 75%,
+          #9b59b6 100%);
+        transform: scaleX(1);
+        box-shadow: 0 0 20px rgba(11, 165, 236, 0.3);
+      }
+      50% {
+        background: linear-gradient(180deg, 
+          #9b59b6 0%,
+          #4ecdc4 25%, 
+          #ff6b6b 50%,
+          var(--accent) 75%,
+          var(--primary) 100%);
+        transform: scaleX(1.3);
+        box-shadow: 0 0 30px rgba(155, 89, 182, 0.4);
+      }
+    }
+    
+    /* Time particles - quantum fluctuations in spacetime */
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      background: 
+        radial-gradient(circle at 15px 10%, rgba(11, 165, 236, 0.15) 2px, transparent 2px),
+        radial-gradient(circle at 25px 25%, rgba(255, 107, 107, 0.12) 1px, transparent 1px),
+        radial-gradient(circle at 10px 40%, rgba(78, 205, 196, 0.13) 1.5px, transparent 1.5px),
+        radial-gradient(circle at 30px 60%, rgba(155, 89, 182, 0.11) 1px, transparent 1px);
+      background-size: 40px 80px;
+      animation: quantumFluctuations 15s linear infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes quantumFluctuations {
+      0% { 
+        transform: translateY(0px); 
+        opacity: 0.4; 
+      }
+      100% { 
+        transform: translateY(-120px); 
+        opacity: 0; 
+      }
     }
     .timeline-item {
       position: relative;
@@ -352,6 +438,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.3);
       border-color: var(--primary);
     }
+    /* Temporal moments - Each experience as a crystallized moment in time */
     .timeline-item::before {
       content: '\f111';
       font-family: 'Font Awesome 6 Free';
@@ -365,7 +452,40 @@
       padding: 8px;
       border-radius: 50%;
       border: 3px solid var(--primary);
+      animation: temporalPulse 4s ease-in-out infinite;
+      box-shadow: 
+        0 0 15px rgba(11, 165, 236, 0.4),
+        inset 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
     }
+    
+    /* Each moment pulses with the rhythm of time */
+    @keyframes temporalPulse {
+      0%, 100% {
+        transform: scale(1);
+        border-color: var(--primary);
+        box-shadow: 
+          0 0 15px rgba(11, 165, 236, 0.4),
+          inset 0 0 10px rgba(255, 255, 255, 0.1);
+      }
+      50% {
+        transform: scale(1.1);
+        border-color: var(--accent);
+        box-shadow: 
+          0 0 25px rgba(0, 180, 216, 0.6),
+          inset 0 0 15px rgba(255, 255, 255, 0.2);
+      }
+    }
+    
+    /* Stagger the pulse animation for each timeline item - like quantum events in spacetime */
+    .timeline-item:nth-child(1)::before { animation-delay: 0s; }
+    .timeline-item:nth-child(2)::before { animation-delay: 0.5s; }
+    .timeline-item:nth-child(3)::before { animation-delay: 1s; }
+    .timeline-item:nth-child(4)::before { animation-delay: 1.5s; }
+    .timeline-item:nth-child(5)::before { animation-delay: 2s; }
+    .timeline-item:nth-child(6)::before { animation-delay: 2.5s; }
+    .timeline-item:nth-child(7)::before { animation-delay: 3s; }
+    .timeline-item:nth-child(8)::before { animation-delay: 3.5s; }
     .timeline-item h3 {
       font-size: 1.4rem;
       font-weight: 600;
@@ -1094,6 +1214,10 @@
 
     <section id="experience">
       <h2>Experience</h2>
+      <div class="time-axis-label">
+        <span class="time-label">The Flow of Time</span>
+        <span class="time-subtitle">Each moment a crystallized experience in spacetime</span>
+      </div>
       <div class="timeline">
         <div class="timeline-item">
           <h3>VP of Engineering &amp; General Manager, Greece – RAW Labs</h3>
