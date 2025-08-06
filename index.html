@@ -12,9 +12,12 @@
     :root {
       --bg-dark: #0e1a29;
       --bg-light: #f9fbfe;
-      --primary: #0ba5ec;
+      --primary: #00b4d8;
+      --primary-light: #0077b6;
       --secondary: #2e4057;
-      --accent: #ff6f61;
+      --accent: #f72585;
+      --accent-warm: #ff8500;
+      --success: #06ffa5;
       --text-light: #f5f5f5;
       --text-dark: #1e293b;
       --timeline-line: rgba(255,255,255,0.2);
@@ -198,13 +201,13 @@
       gap: 8px;
     }
     .btn-primary {
-      background: linear-gradient(45deg, var(--primary), #1e90ff);
+      background: linear-gradient(45deg, var(--primary), var(--primary-light));
       color: white;
-      box-shadow: 0 4px 15px rgba(11, 165, 236, 0.3);
+      box-shadow: 0 4px 15px rgba(0, 180, 216, 0.4);
     }
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(11, 165, 236, 0.4);
+      box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
       text-decoration: none;
     }
     .btn-secondary {
@@ -215,6 +218,16 @@
     .btn-secondary:hover {
       background: var(--primary);
       transform: translateY(-2px);
+      text-decoration: none;
+    }
+    .btn-download {
+      background: linear-gradient(45deg, var(--accent), var(--accent-warm));
+      color: white;
+      box-shadow: 0 4px 15px rgba(247, 37, 133, 0.4);
+    }
+    .btn-download:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(247, 37, 133, 0.5);
       text-decoration: none;
     }
     .scroll-indicator {
@@ -584,10 +597,11 @@
       }
       .hero h1 { font-size: 2.5rem; }
       .hero .tagline { font-size: 1.3rem; }
-      .hero-buttons {
-        flex-direction: column;
-        align-items: center;
-      }
+             .hero-buttons {
+         flex-direction: column;
+         align-items: center;
+         gap: 0.8rem;
+       }
       .about {
         flex-direction: column;
         text-align: center;
@@ -669,6 +683,10 @@
       <a href="#contact" class="btn btn-primary">
         <i class="fas fa-envelope"></i>
         Get In Touch
+      </a>
+      <a href="#" class="btn btn-download" onclick="downloadCV()">
+        <i class="fas fa-download"></i>
+        Download CV
       </a>
       <a href="#about" class="btn btn-secondary">
         <i class="fas fa-user"></i>
@@ -961,13 +979,28 @@
       }
 
       // Create mailto link
-      const mailtoLink = `mailto:your-email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+      const mailtoLink = `mailto:p.polydoras@yahoo.gr?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
       
       alert('Thank you for your message! Your email client will open to send the message.');
       window.location.href = mailtoLink;
       
       // Reset form
       document.querySelector('.contact-form form').reset();
+    }
+
+    // Download CV function
+    function downloadCV() {
+      // For now, this will generate a simple alert
+      // You can replace this with actual PDF generation or link to a hosted PDF
+      alert('CV download feature ready! Please add your PDF file to the project and update this function.');
+      
+      // Example of how to trigger download when you have a PDF:
+      // const link = document.createElement('a');
+      // link.href = 'assets/Pavlos_Polydoras_CV.pdf';
+      // link.download = 'Pavlos_Polydoras_CV.pdf';
+      // document.body.appendChild(link);
+      // link.click();
+      // document.body.removeChild(link);
     }
 
     // Initialize particles and animations
