@@ -3,323 +3,378 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pavlos Polydoras – Curriculum Vitae</title>
+  <title>Pavlos Polydoras · Portfolio</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-xX2YoVTNKx4ezpswKbZ8rm9w4kzbsEZuEx6bykAHjXKbZo9btzLNafJO2V7eeXOA+AoS9MFuQmqZqkqw7nj2Ng==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    /* Reset & base styling */
+    :root {
+      --bg-dark: #0e1a29;
+      --bg-light: #f9fbfe;
+      --primary: #0ba5ec;
+      --secondary: #2e4057;
+      --accent: #ff6f61;
+      --text-light: #f5f5f5;
+      --text-dark: #1e293b;
+      --timeline-line: rgba(255,255,255,0.2);
+    }
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
     body {
-      font-family: 'Segoe UI', Tahoma, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f8f9fb;
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-light);
     }
-    a { color: #0066cc; text-decoration: none; }
+    a { color: var(--primary); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    /* Layout containers */
-    header {
-      background: #003366;
-      color: #fff;
-      padding: 60px 20px;
+    /* Hero section */
+    .hero {
+      background: linear-gradient(135deg, #001f3f 0%, #0e1a29 100%);
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
+      padding: 40px 20px;
     }
-    header h1 {
-      font-size: 2.5rem;
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
       margin-bottom: 10px;
-      font-weight: 600;
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(11,165,236,0.4);
     }
-    header p {
-      font-size: 1.1rem;
+    .hero h2 {
+      font-size: 1.5rem;
+      font-weight: 500;
+      margin-bottom: 25px;
+      color: var(--text-light);
+      opacity: 0.9;
+    }
+    .hero p {
       max-width: 800px;
-      margin: 0 auto;
+      font-size: 1rem;
       opacity: 0.85;
+      margin-bottom: 30px;
     }
+    .scroll-indicator {
+      margin-top: 20px;
+      animation: bounce 2s infinite;
+      color: var(--primary);
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    /* Section container */
     .container {
       max-width: 1100px;
       margin: 0 auto;
       padding: 40px 20px;
     }
     section {
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
     section h2 {
-      font-size: 1.8rem;
+      font-size: 2rem;
+      font-weight: 600;
       margin-bottom: 20px;
-      position: relative;
-      padding-bottom: 10px;
-      color: #003366;
+      color: var(--primary);
     }
-    section h2::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 3px;
-      width: 50px;
-      background-color: #0066cc;
+    /* About section */
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
     }
-    /* Summary */
-    .summary p {
-      font-size: 1rem;
-      max-width: 900px;
+    .about .avatar {
+      flex: 0 0 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, var(--primary) 0%, var(--secondary) 70%);
+      box-shadow: 0 0 20px rgba(11,165,236,0.4);
     }
-    /* Experience timeline */
+    .about .description {
+      flex: 1;
+      min-width: 280px;
+      color: var(--text-light);
+      line-height: 1.5;
+    }
+    /* Timeline */
     .timeline {
       position: relative;
-      margin-left: 20px;
-      padding-left: 30px;
+      padding-left: 40px;
     }
     .timeline::before {
       content: '';
       position: absolute;
-      left: 10px;
+      left: 15px;
       top: 0;
       bottom: 0;
       width: 2px;
-      background: #c0c8d1;
+      background: var(--timeline-line);
     }
     .timeline-item {
-      margin-bottom: 40px;
       position: relative;
+      margin-bottom: 40px;
     }
     .timeline-item::before {
-      content: '';
+      content: '\f111';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
       position: absolute;
-      left: -5px;
-      top: 5px;
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #0066cc;
+      left: -6px;
+      top: 4px;
+      font-size: 10px;
+      color: var(--primary);
+      background: var(--bg-dark);
     }
     .timeline-item h3 {
-      font-size: 1.2rem;
-      color: #003366;
-      margin-bottom: 4px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--accent);
     }
     .timeline-item h4 {
-      font-size: 0.95rem;
-      color: #555;
-      font-weight: normal;
-      margin-bottom: 8px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(245,245,245,0.7);
+      margin-bottom: 10px;
     }
     .timeline-item p {
       font-size: 0.95rem;
-      line-height: 1.4;
+      color: rgba(245,245,245,0.85);
+      margin-bottom: 8px;
     }
     .timeline-item ul {
-      list-style: disc inside;
-      margin-top: 5px;
+      margin-left: 16px;
+      list-style-type: square;
     }
-    /* Education list */
+    .timeline-item ul li {
+      margin-bottom: 5px;
+      font-size: 0.9rem;
+      color: rgba(245,245,245,0.8);
+    }
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .skill {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .skill i {
+      font-size: 1.5rem;
+      color: var(--primary);
+    }
+    .skill span {
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+    /* Education */
     .education-item {
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
     .education-item h3 {
       font-size: 1.1rem;
-      color: #003366;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 4px;
     }
     .education-item h4 {
-      font-size: 0.95rem;
-      color: #555;
-      font-weight: normal;
-    }
-    /* Skills grid */
-    .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 10px;
-    }
-    .skill-item {
-      background: #eaf1f8;
-      padding: 8px 12px;
-      border-radius: 4px;
       font-size: 0.9rem;
-      color: #003366;
+      font-weight: 500;
+      color: rgba(245,245,245,0.7);
     }
-    /* Contact section */
+    /* Contact */
     .contact-info {
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 10px;
+      font-size: 0.95rem;
     }
-    .contact-info a {
-      color: #0066cc;
+    .contact-info div {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(245,245,245,0.9);
+    }
+    .contact-info i {
+      color: var(--primary);
+      font-size: 1.2rem;
     }
     /* Footer */
     footer {
-      background: #f0f3f6;
+      background: #0a1726;
       padding: 20px;
       text-align: center;
-      font-size: 0.85rem;
-      color: #777;
+      font-size: 0.8rem;
+      color: rgba(245,245,245,0.6);
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 2rem; }
+      .hero h2 { font-size: 1.1rem; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Pavlos Polydoras</h1>
-    <p>Technology leader driving digital transformation and AI‑powered data services</p>
-  </header>
+  <section class="hero">
+    <h1>Pavlos&nbsp;Polydoras</h1>
+    <h2>Digital Transformation &amp; AI‑Driven Data Leader</h2>
+    <p>
+      Executive technology leader with 20&nbsp;years’ experience delivering secure, scalable systems across
+      research, government and enterprise sectors. Passionate about harnessing data and artificial intelligence
+      to unlock new possibilities.
+    </p>
+    <div class="scroll-indicator">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
   <div class="container">
-    <section id="summary" class="summary">
-      <h2>Profile</h2>
-      <p>
-        Technology executive with <strong>20&nbsp;years of experience</strong> delivering digital‑transformation initiatives
-        and secure, scalable solutions across research, public‑sector and enterprise environments. I combine
-        deep software‑engineering expertise with strategic vision, building and guiding teams to design,
-        implement and deploy high‑impact systems. Adept at bridging technical and business domains,
-        I create collaborative environments where engineers thrive and clients receive data‑driven innovations.
-      </p>
-    </section>
-
-    <section id="experience">
-      <h2>Professional Experience</h2>
-      <div class="timeline">
-        <!-- RAW Labs -->
-        <div class="timeline-item">
-          <h3>VP of Engineering &amp; General Manager, Greece – RAW Labs</h3>
-          <h4>Jul&nbsp;2021 – Present · Athens, Greece</h4>
+    <section id="about">
+      <h2>About</h2>
+      <div class="about">
+        <div class="avatar"></div>
+        <div class="description">
           <p>
-            Lead the design and implementation of chat and analytics services built on client data using
-            <strong>MXCP</strong>, RAW Labs’ enterprise framework for building AI‑enabled data services. Guide projects
-            from proof of concept through business proposals, statements of work and production deployment.
-          </p>
-          <ul>
-            <li>Architect AI models and agent‑based applications, aligning technical execution with business goals.</li>
-            <li>Manage cross‑functional engineering teams and serve as primary liaison with customers, ensuring
-              requirements are translated into innovative solutions.</li>
-            <li>Develop go‑to‑market strategies and craft proposals that showcase the value of MXCP‑based services.</li>
-          </ul>
-        </div>
-        <!-- Palowise CTO -->
-        <div class="timeline-item">
-          <h3>Chief Technology Officer – Palowise</h3>
-          <h4>Jan&nbsp;2019 – Jun&nbsp;2021 · Athens, Greece (On‑site)</h4>
-          <p>
-            Directed all technical operations for Palowise, a SaaS platform delivering real‑time social and web
-            analytics. Oversaw product strategy and engineering execution during the company’s rebrand and
-            expansion from PaloPro into Palowise.
-          </p>
-          <ul>
-            <li>Designed scalable data‑ingestion pipelines and multilingual NLP models to aggregate news and
-              social signals from European markets.</li>
-            <li>Led development of analytics dashboards that provided customized insights to enterprise clients.</li>
-            <li>Built and mentored engineering teams, collaborating with leadership to align technology roadmap
-              with business objectives.</li>
-          </ul>
-        </div>
-        <!-- Benefits Science -->
-        <div class="timeline-item">
-          <h3>Senior Software Architect – Benefits Science Technologies</h3>
-          <h4>Apr&nbsp;2014 – Dec&nbsp;2018 · Halandri, Attica, Greece</h4>
-          <p>
-            Served as technical lead for the company’s analytics platform that helps employers and consultants
-            manage employee benefits. Responsible for designing and implementing large‑scale data and ETL systems
-            and automating client onboarding.
-          </p>
-          <ul>
-            <li>Led design &amp; implementation of a distributed Data Lake and Big Data ETL services.</li>
-            <li>Headed new client development, tailoring ETL pipelines to client‑specific data formats.</li>
-            <li>Directed automation initiatives to streamline analytics workflows and reduce time to insight.</li>
-            <li>Utilized a technology stack including Java/Scala, Apache Spark, Databricks, and the AWS ecosystem
-              (EC2, Lambda, Athena, EMR/Spark, QuickSight, Data Pipeline, Glue, S3, RDS/MySQL, Redshift, KMS,
-              IAM) plus Alfresco Activiti BPM.</li>
-          </ul>
-        </div>
-        <!-- UBITECH -->
-        <div class="timeline-item">
-          <h3>Senior Software Architect – UBITECH</h3>
-          <h4>Sep&nbsp;2010 – Mar&nbsp;2014 · Athens, Greece</h4>
-          <p>
-            Led development of secure, high‑availability platforms for government clients, focusing on
-            cross‑border civil‑status data exchange and document management projects.
-          </p>
-          <ul>
-            <li>Architected and implemented core software, security and infrastructure for RENAPER (Argentina’s
-              civil‑status registry) and ICCS‑CIEC data exchange initiatives.</li>
-            <li>Designed PKI‑based authentication and encryption schemes, ensuring compliance with international
-              standards for civil‑status data.</li>
-            <li>Worked with JavaEE, cryptography &amp; PKI frameworks, secure communication protocols,
-              authentication/authorization services, EJBCA and jBPM.</li>
-          </ul>
-        </div>
-        <!-- Hellenic Army -->
-        <div class="timeline-item">
-          <h3>Software Developer – Information Systems Support Center, Hellenic Army</h3>
-          <h4>Mar&nbsp;2010 – Nov&nbsp;2010 · Athens, Greece</h4>
-          <p>
-            Contributed to the design, implementation and documentation of information systems as part of
-            national service in the Hellenic Army.
-          </p>
-        </div>
-        <!-- University of Athens -->
-        <div class="timeline-item">
-          <h3>Software Developer &amp; Researcher – University of Athens</h3>
-          <h4>Nov&nbsp;2005 – Feb&nbsp;2010 · Athens, Greece</h4>
-          <p>
-            Worked as systems architect and developer on multiple EU research projects covering
-            information retrieval, service composition, query processing and optimization.
-          </p>
-          <ul>
-            <li>Participated in research initiatives such as D4Science, D4Science‑II, Health‑e‑Child, DILIGENT and
-              DL.org, contributing to service networks and digital libraries on distributed infrastructures.</li>
-          </ul>
-        </div>
-        <!-- Synastria Technologies -->
-        <div class="timeline-item">
-          <h3>Software Developer – Synastria Technologies</h3>
-          <h4>Jan&nbsp;2007 – Jan&nbsp;2008 · Athens, Greece</h4>
-          <p>
-            Designed and implemented the BIRonet Virtual Office web application using JavaEE (Servlets, JSP), JMS,
-            Hibernate, MySQL and VMWare technologies.
+            I’m a software architect turned technology executive who pairs deep engineering expertise with a
+            strategic outlook. Over the past two decades I’ve led high‑impact projects that span cloud
+            infrastructure, distributed data systems and AI‑powered analytics. I thrive on building collaborative
+            teams, mentoring engineers and translating complex requirements into innovative products that advance
+            digital transformation.
           </p>
         </div>
       </div>
     </section>
-
+    <section id="experience">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <h3>VP of Engineering &amp; General Manager, Greece – RAW Labs</h3>
+          <h4>Jul&nbsp;2021 – Present</h4>
+          <p>
+            Lead creation of chat and analytics services built on client data using <strong>MXCP</strong>, RAW Labs’ MCP framework.
+            Guide projects from POC through SOW, design, implementation and delivery.
+          </p>
+          <ul>
+            <li>Architect AI models and agent‑based applications aligned with customer objectives.</li>
+            <li>Coordinate engineering teams and manage stakeholder relationships.</li>
+            <li>Develop business proposals and go‑to‑market strategies for MXCP‑based services.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h3>Chief Technology Officer – Palowise</h3>
+          <h4>Jan&nbsp;2019 – Jun&nbsp;2021</h4>
+          <p>
+            Oversaw all technical operations for Palowise, a SaaS platform delivering real‑time social and web analytics.
+            Led the transition from PaloPro to Palowise, expanding the platform’s capabilities and market reach.
+          </p>
+          <ul>
+            <li>Designed scalable ingestion pipelines and multilingual NLP models.</li>
+            <li>Built analytics dashboards providing customized insights.</li>
+            <li>Mentored engineering teams and aligned technology roadmap with business goals.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h3>Senior Software Architect – Benefits Science</h3>
+          <h4>Apr&nbsp;2014 – Dec&nbsp;2018</h4>
+          <p>
+            Technical lead for analytics platform enabling employers and consultants to optimize benefits plans.
+          </p>
+          <ul>
+            <li>Designed &amp; implemented a distributed Data Lake and Big Data ETL services.</li>
+            <li>Directed new client development and automation initiatives.</li>
+            <li>Leveraged Java/Scala, Apache Spark, Databricks and AWS (EC2, Lambda, EMR/Spark, Athena, QuickSight,
+              Data Pipeline, Glue, S3, RDS, Redshift, KMS, IAM).</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h3>Senior Software Architect – UBITECH</h3>
+          <h4>Sep&nbsp;2010 – Mar&nbsp;2014</h4>
+          <p>
+            Developed secure, high‑availability platforms for cross‑border civil‑status data exchange projects.
+          </p>
+          <ul>
+            <li>Led core software, security and infrastructure design for RENAPER and ICCS‑CIEC initiatives.</li>
+            <li>Implemented PKI‑based authentication and encryption schemes.</li>
+            <li>Worked extensively with JavaEE, cryptography, EJBCA and jBPM.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h3>Software Developer – Hellenic Army</h3>
+          <h4>Mar&nbsp;2010 – Nov&nbsp;2010</h4>
+          <p>
+            Designed and implemented software solutions and compiled technical reports for critical
+            information systems during national service.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <h3>Software Developer &amp; Researcher – University of Athens</h3>
+          <h4>Nov&nbsp;2005 – Feb&nbsp;2010</h4>
+          <p>
+            Systems architect and developer on EU research projects in information retrieval, service composition and
+            query optimization.
+          </p>
+          <ul>
+            <li>Contributed to D4Science, D4Science‑II, Health‑e‑Child, DILIGENT and DL.org initiatives.</li>
+          </ul>
+        </div>
+        <div class="timeline-item">
+          <h3>Software Developer – Synastria Technologies</h3>
+          <h4>Jan&nbsp;2007 – Jan&nbsp;2008</h4>
+          <p>
+            Developed BIRonet Virtual Office web application using JavaEE, JMS, Hibernate, MySQL and VMWare technologies.
+          </p>
+        </div>
+      </div>
+    </section>
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-grid">
+        <div class="skill"><i class="fas fa-brain"></i><span>AI &amp; Machine Learning</span></div>
+        <div class="skill"><i class="fas fa-chart-line"></i><span>Digital Transformation Strategy</span></div>
+        <div class="skill"><i class="fas fa-database"></i><span>Data Architecture &amp; Integration</span></div>
+        <div class="skill"><i class="fas fa-network-wired"></i><span>Distributed Systems</span></div>
+        <div class="skill"><i class="fas fa-cloud"></i><span>Cloud Platforms &amp; Microservices</span></div>
+        <div class="skill"><i class="fas fa-layer-group"></i><span>Big Data &amp; ETL (Spark, Databricks)</span></div>
+        <div class="skill"><i class="fas fa-shield-alt"></i><span>Security &amp; PKI</span></div>
+        <div class="skill"><i class="fas fa-users"></i><span>Team Leadership &amp; Mentoring</span></div>
+      </div>
+    </section>
     <section id="education">
       <h2>Education</h2>
       <div class="education-item">
         <h3>M.Sc. in Information Technology</h3>
-        <h4>National and Kapodistrian University of Athens (2004–2009)</h4>
-        <p>Focused on information systems, data management and distributed computing.</p>
+        <h4>National &amp; Kapodistrian University of Athens · 2004–2009</h4>
       </div>
       <div class="education-item">
         <h3>B.Sc. in Computer Science</h3>
-        <h4>National and Kapodistrian University of Athens (1999–2004)</h4>
-        <p>Completed thesis on dynamic composition of MPMD programs, published in the university’s “Best Bachelor – Master Theses” magazine.</p>
+        <h4>National &amp; Kapodistrian University of Athens · 1999–2004</h4>
       </div>
     </section>
-
-    <section id="skills">
-      <h2>Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-item">Digital transformation &amp; strategy</div>
-        <div class="skill-item">AI &amp; machine learning</div>
-        <div class="skill-item">Data architecture &amp; integration</div>
-        <div class="skill-item">Distributed systems</div>
-        <div class="skill-item">Cloud platforms (AWS, Azure)</div>
-        <div class="skill-item">Big data &amp; ETL (Spark, Databricks)</div>
-        <div class="skill-item">Security &amp; PKI</div>
-        <div class="skill-item">Team leadership &amp; mentoring</div>
-      </div>
-    </section>
-
     <section id="contact">
       <h2>Contact</h2>
       <div class="contact-info">
-        <div><strong>Location:</strong> Athens, Greece</div>
-        <div><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/ppolydoras/">linkedin.com/in/ppolydoras</a></div>
-        <!-- Email is intentionally omitted to respect privacy -->
+        <div><i class="fas fa-map-marker-alt"></i> Athens, Greece</div>
+        <div><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/ppolydoras/"> linkedin.com/in/ppolydoras</a></div>
       </div>
     </section>
   </div>
   <footer>
-    &copy; 2025 Pavlos Polydoras. This site was generated as a professional résumé. All rights reserved.
+    © 2025 Pavlos Polydoras · All rights reserved.
   </footer>
 </body>
 </html>
