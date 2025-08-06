@@ -1474,20 +1474,6 @@
     // Download CV function - Generate PDF from current page
     async function downloadCV() {
       try {
-        // Add PDF generation class to body to trigger print styles
-        document.body.classList.add('pdf-generation');
-        
-        // Hide navigation and scroll indicator for clean PDF
-        const navbar = document.querySelector('.navbar');
-        const progressBar = document.querySelector('.progress-bar');
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-        const heroButtons = document.querySelector('.hero-buttons');
-        
-        if (navbar) navbar.style.display = 'none';
-        if (progressBar) progressBar.style.display = 'none';
-        if (scrollIndicator) scrollIndicator.style.display = 'none';
-        if (heroButtons) heroButtons.style.display = 'none';
-        
         // Import html2pdf library dynamically
         const script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
@@ -1495,57 +1481,146 @@
         
         await new Promise(resolve => script.onload = resolve);
         
-        // Configure PDF options for compact output
+        // Create a temporary container with simplified content
+        const tempContainer = document.createElement('div');
+        tempContainer.style.cssText = `
+          background: white;
+          color: #333;
+          font-family: 'Montserrat', sans-serif;
+          padding: 20px;
+          line-height: 1.4;
+          font-size: 12px;
+        `;
+        
+        // Copy main content sections
+        const hero = document.querySelector('.hero');
+        const about = document.querySelector('#about');
+        const experience = document.querySelector('#experience');
+        const skills = document.querySelector('#skills');
+        const expertise = document.querySelector('#expertise');
+        const education = document.querySelector('#education');
+        const languages = document.querySelector('#languages');
+        const contact = document.querySelector('#contact');
+        
+        // Add simplified hero
+        if (hero) {
+          const heroDiv = document.createElement('div');
+          heroDiv.innerHTML = `
+            <div style="text-align: center; margin-bottom: 20px;">
+              <h1 style="font-size: 24px; color: #333; margin: 0 0 8px 0; font-weight: 700;">Pavlos Polydoras</h1>
+              <h2 style="font-size: 16px; color: #666; margin: 0 0 12px 0; font-weight: 500;">Digital Transformation & AI-Driven Data Leader</h2>
+              <p style="font-size: 11px; color: #333; margin: 0 0 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
+                Executive technology leader with 20 years' experience delivering secure, scalable systems across
+                research, government and enterprise sectors. Passionate about harnessing data and artificial intelligence
+                to unlock new possibilities.
+              </p>
+            </div>
+          `;
+          tempContainer.appendChild(heroDiv);
+        }
+        
+        // Helper function to clean and add sections
+        function addSection(section, title) {
+          if (section) {
+            const sectionDiv = document.createElement('div');
+            sectionDiv.style.cssText = 'margin-bottom: 25px; page-break-inside: avoid;';
+            
+            const titleDiv = document.createElement('h2');
+            titleDiv.style.cssText = 'font-size: 16px; color: #333; margin: 0 0 12px 0; font-weight: 600; border-bottom: 2px solid #0ba5ec; padding-bottom: 4px;';
+            titleDiv.textContent = title;
+            sectionDiv.appendChild(titleDiv);
+            
+            const contentDiv = document.createElement('div');
+            contentDiv.innerHTML = section.innerHTML;
+            
+            // Clean up the content - remove animations, backgrounds, etc.
+            const elementsToStyle = contentDiv.querySelectorAll('*');
+            elementsToStyle.forEach(el => {
+              el.style.background = 'transparent';
+              el.style.backgroundColor = 'transparent';
+              el.style.color = '#333';
+              el.style.boxShadow = 'none';
+              el.style.textShadow = 'none';
+              el.style.border = 'none';
+              if (el.classList.contains('timeline-item')) {
+                el.style.border = '1px solid #ddd';
+                el.style.marginBottom = '15px';
+                el.style.padding = '12px';
+                el.style.borderRadius = '4px';
+              }
+              if (el.classList.contains('tech-stack')) {
+                el.style.background = '#f5f5f5';
+                el.style.borderLeft = '3px solid #0ba5ec';
+                el.style.padding = '8px';
+                el.style.fontSize = '10px';
+                el.style.margin = '8px 0';
+              }
+              if (el.classList.contains('project-tag')) {
+                el.style.background = '#666';
+                el.style.color = 'white';
+                el.style.padding = '2px 6px';
+                el.style.borderRadius = '3px';
+                el.style.fontSize = '9px';
+                el.style.display = 'inline-block';
+                el.style.margin = '2px 4px 2px 0';
+              }
+              if (el.classList.contains('skill') || el.classList.contains('tech-item')) {
+                el.style.background = '#f0f0f0';
+                el.style.border = '1px solid #ddd';
+                el.style.padding = '6px 10px';
+                el.style.borderRadius = '4px';
+                el.style.fontSize = '10px';
+                el.style.display = 'inline-block';
+                el.style.margin = '3px';
+              }
+            });
+            
+            // Hide contact form
+            const contactForm = contentDiv.querySelector('.contact-form');
+            if (contactForm) {
+              contactForm.style.display = 'none';
+            }
+            
+            sectionDiv.appendChild(contentDiv);
+            tempContainer.appendChild(sectionDiv);
+          }
+        }
+        
+        // Add all sections
+        addSection(about, 'About');
+        addSection(experience, 'Experience');
+        addSection(skills, 'Skills');
+        addSection(expertise, 'Technical Expertise');
+        addSection(education, 'Education');
+        addSection(languages, 'Languages');
+        addSection(contact, 'Contact');
+        
+        // Configure PDF options
         const options = {
-          margin: [0.4, 0.4, 0.4, 0.4],
+          margin: [0.5, 0.5, 0.5, 0.5],
           filename: 'Pavlos_Polydoras_CV.pdf',
-          image: { type: 'jpeg', quality: 0.92 },
+          image: { type: 'jpeg', quality: 0.95 },
           html2canvas: { 
-            scale: 1.8,
+            scale: 2,
             useCORS: true,
             letterRendering: true,
             allowTaint: false,
-            scrollX: 0,
-            scrollY: 0,
-            windowWidth: 1200,
-            windowHeight: 1600
+            backgroundColor: '#ffffff'
           },
           jsPDF: { 
             unit: 'in', 
             format: 'a4', 
             orientation: 'portrait',
             compress: true
-          },
-          pagebreak: { 
-            mode: ['css', 'legacy']
           }
         };
         
         // Generate and download PDF
-        await html2pdf().set(options).from(document.body).save();
-        
-        // Restore hidden elements and remove PDF class
-        document.body.classList.remove('pdf-generation');
-        if (navbar) navbar.style.display = '';
-        if (progressBar) progressBar.style.display = '';
-        if (scrollIndicator) scrollIndicator.style.display = '';
-        if (heroButtons) heroButtons.style.display = '';
+        await html2pdf().set(options).from(tempContainer).save();
         
       } catch (error) {
         console.error('PDF generation failed:', error);
         alert('PDF generation failed. Please try again or contact support.');
-        
-        // Restore hidden elements in case of error
-        document.body.classList.remove('pdf-generation');
-        const navbar = document.querySelector('.navbar');
-        const progressBar = document.querySelector('.progress-bar');
-        const scrollIndicator = document.querySelector('.scroll-indicator');
-        const heroButtons = document.querySelector('.hero-buttons');
-        
-        if (navbar) navbar.style.display = '';
-        if (progressBar) progressBar.style.display = '';
-        if (scrollIndicator) scrollIndicator.style.display = '';
-        if (heroButtons) heroButtons.style.display = '';
       }
     }
 
