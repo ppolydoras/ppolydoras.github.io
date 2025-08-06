@@ -1487,10 +1487,10 @@
           background: white;
           color: #333;
           font-family: Arial, sans-serif;
-          padding: 15px;
-          line-height: 1.2;
-          font-size: 10px;
-          max-width: 700px;
+          padding: 20px;
+          line-height: 1.3;
+          font-size: 11px;
+          max-width: 750px;
           margin: 0 auto;
         `;
         
@@ -1504,30 +1504,42 @@
         const languages = document.querySelector('#languages');
         const contact = document.querySelector('#contact');
         
-        // Add simplified hero
+        // Add hero with photo
         if (hero) {
           const heroDiv = document.createElement('div');
+          const profileImg = document.querySelector('.avatar');
+          
           heroDiv.innerHTML = `
-            <div style="text-align: center; margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
-              <h1 style="font-size: 18px; color: #333; margin: 0 0 4px 0; font-weight: bold;">Pavlos Polydoras</h1>
-              <h2 style="font-size: 12px; color: #666; margin: 0 0 6px 0; font-weight: normal;">Digital Transformation & AI-Driven Data Leader</h2>
-              <p style="font-size: 9px; color: #333; margin: 0; line-height: 1.3;">
-                Executive technology leader with 20 years' experience delivering secure, scalable systems across research, government and enterprise sectors.
-              </p>
+            <div style="display: flex; align-items: center; margin-bottom: 20px; border-bottom: 2px solid #0ba5ec; padding-bottom: 15px;">
+              <div style="flex: 0 0 100px; margin-right: 20px;">
+                ${profileImg ? `<img src="${profileImg.src}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #0ba5ec;">` : ''}
+              </div>
+              <div style="flex: 1;">
+                <h1 style="font-size: 22px; color: #333; margin: 0 0 6px 0; font-weight: bold;">Pavlos Polydoras</h1>
+                <h2 style="font-size: 14px; color: #0ba5ec; margin: 0 0 8px 0; font-weight: normal;">Digital Transformation & AI-Driven Data Leader</h2>
+                <p style="font-size: 10px; color: #333; margin: 0 0 8px 0; line-height: 1.4;">
+                  Executive technology leader with 20 years' experience delivering secure, scalable systems across research, government and enterprise sectors. Passionate about harnessing data and artificial intelligence to unlock new possibilities.
+                </p>
+                <div style="font-size: 9px; color: #666;">
+                  <div>📧 p.polydoras@yahoo.gr</div>
+                  <div>📍 Athens, Greece</div>
+                  <div>💼 LinkedIn: linkedin.com/in/ppolydoras</div>
+                </div>
+              </div>
             </div>
           `;
           tempContainer.appendChild(heroDiv);
         }
         
-        // Helper function to create compact sections
-        function addCompactSection(originalSection, title, isSpecial = false) {
+        // Helper function to create expanded sections for 2-page layout
+        function addExpandedSection(originalSection, title, isSpecial = false) {
           if (!originalSection) return;
           
           const sectionDiv = document.createElement('div');
-          sectionDiv.style.cssText = 'margin-bottom: 12px; page-break-inside: avoid;';
+          sectionDiv.style.cssText = 'margin-bottom: 18px; page-break-inside: avoid;';
           
           const titleDiv = document.createElement('h3');
-          titleDiv.style.cssText = 'font-size: 11px; color: #333; margin: 0 0 6px 0; font-weight: bold; border-bottom: 1px solid #ccc; padding-bottom: 2px;';
+          titleDiv.style.cssText = 'font-size: 13px; color: #0ba5ec; margin: 0 0 10px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;';
           titleDiv.textContent = title;
           sectionDiv.appendChild(titleDiv);
           
@@ -1535,7 +1547,7 @@
             const about = originalSection.querySelector('.description p');
             if (about) {
               const p = document.createElement('p');
-              p.style.cssText = 'font-size: 9px; margin: 0 0 8px 0; line-height: 1.3;';
+              p.style.cssText = 'font-size: 10px; margin: 0 0 12px 0; line-height: 1.4; text-align: justify;';
               p.textContent = about.textContent;
               sectionDiv.appendChild(p);
             }
@@ -1543,64 +1555,120 @@
           
           else if (title === 'Experience') {
             const timelineItems = originalSection.querySelectorAll('.timeline-item');
-            timelineItems.forEach(item => {
+            timelineItems.forEach((item, index) => {
               const itemDiv = document.createElement('div');
-              itemDiv.style.cssText = 'margin-bottom: 8px; border-left: 2px solid #ddd; padding-left: 8px;';
+              itemDiv.style.cssText = 'margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px; page-break-inside: avoid;';
               
               const h3 = item.querySelector('h3');
               const h4 = item.querySelector('h4');
               const p = item.querySelector('p');
+              const ul = item.querySelector('ul');
               const techStack = item.querySelector('.tech-stack');
               const projects = item.querySelector('.key-projects');
               
               if (h3) {
                 const title = document.createElement('div');
-                title.style.cssText = 'font-size: 9px; font-weight: bold; margin-bottom: 2px;';
+                title.style.cssText = 'font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;';
                 title.textContent = h3.textContent;
                 itemDiv.appendChild(title);
               }
               
               if (h4) {
                 const period = document.createElement('div');
-                period.style.cssText = 'font-size: 8px; color: #666; margin-bottom: 3px;';
+                period.style.cssText = 'font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;';
                 period.textContent = h4.textContent.replace('🕘', '').trim();
                 itemDiv.appendChild(period);
               }
               
               if (p) {
                 const desc = document.createElement('div');
-                desc.style.cssText = 'font-size: 8px; margin-bottom: 3px; line-height: 1.2;';
+                desc.style.cssText = 'font-size: 9px; margin-bottom: 5px; line-height: 1.3;';
                 desc.textContent = p.textContent;
                 itemDiv.appendChild(desc);
               }
               
+              if (ul) {
+                const bullets = ul.querySelectorAll('li');
+                if (bullets.length > 0) {
+                  const ulDiv = document.createElement('div');
+                  ulDiv.style.cssText = 'margin-bottom: 5px;';
+                  bullets.forEach(li => {
+                    const bullet = document.createElement('div');
+                    bullet.style.cssText = 'font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;';
+                    bullet.innerHTML = `<span style="position: absolute; left: 0;">•</span>${li.textContent}`;
+                    ulDiv.appendChild(bullet);
+                  });
+                  itemDiv.appendChild(ulDiv);
+                }
+              }
+              
               if (techStack) {
                 const tech = document.createElement('div');
-                tech.style.cssText = 'font-size: 7px; color: #666; margin-bottom: 2px;';
-                tech.textContent = techStack.textContent.replace('🔧 Key Technologies:', 'Tech:');
+                tech.style.cssText = 'font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;';
+                tech.textContent = techStack.textContent.replace('🔧 Key Technologies:', 'Technologies:');
                 itemDiv.appendChild(tech);
               }
               
               if (projects) {
                 const proj = document.createElement('div');
-                proj.style.cssText = 'font-size: 7px; color: #666;';
-                proj.textContent = projects.textContent.replace('🚀 Key Projects:', 'Projects:');
+                proj.style.cssText = 'font-size: 8px; color: #0ba5ec; font-weight: 500;';
+                proj.textContent = projects.textContent.replace('🚀 Key Projects:', 'Key Projects:');
                 itemDiv.appendChild(proj);
               }
               
               sectionDiv.appendChild(itemDiv);
+              
+              // Add page break after 3rd position for better layout
+              if (index === 2) {
+                const pageBreak = document.createElement('div');
+                pageBreak.style.cssText = 'page-break-after: always;';
+                sectionDiv.appendChild(pageBreak);
+              }
             });
           }
           
-          else if (title === 'Skills' || title === 'Technical Expertise') {
-            const skills = originalSection.querySelectorAll('.skill span, .tech-item');
+          else if (title === 'Skills') {
+            const skills = originalSection.querySelectorAll('.skill span');
             if (skills.length > 0) {
-              const skillsText = Array.from(skills).map(skill => skill.textContent.trim()).join(' • ');
-              const skillsDiv = document.createElement('div');
-              skillsDiv.style.cssText = 'font-size: 8px; line-height: 1.3;';
-              skillsDiv.textContent = skillsText;
-              sectionDiv.appendChild(skillsDiv);
+              const skillsGrid = document.createElement('div');
+              skillsGrid.style.cssText = 'display: grid; grid-template-columns: 1fr 1fr; gap: 8px;';
+              
+              Array.from(skills).forEach(skill => {
+                const skillDiv = document.createElement('div');
+                skillDiv.style.cssText = 'font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;';
+                skillDiv.textContent = skill.textContent.trim();
+                skillsGrid.appendChild(skillDiv);
+              });
+              
+              sectionDiv.appendChild(skillsGrid);
             }
+          }
+          
+          else if (title === 'Technical Expertise') {
+            const categories = originalSection.querySelectorAll('.expertise-category');
+            categories.forEach(category => {
+              const catDiv = document.createElement('div');
+              catDiv.style.cssText = 'margin-bottom: 8px;';
+              
+              const catTitle = category.querySelector('h3');
+              if (catTitle) {
+                const titleDiv = document.createElement('div');
+                titleDiv.style.cssText = 'font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #0ba5ec;';
+                titleDiv.textContent = catTitle.textContent.replace(/[🔧⚡🛡️📊]/g, '').trim();
+                catDiv.appendChild(titleDiv);
+              }
+              
+              const techItems = category.querySelectorAll('.tech-item');
+              if (techItems.length > 0) {
+                const techText = Array.from(techItems).map(item => item.textContent.trim()).join(', ');
+                const techDiv = document.createElement('div');
+                techDiv.style.cssText = 'font-size: 8px; line-height: 1.3; color: #555;';
+                techDiv.textContent = techText;
+                catDiv.appendChild(techDiv);
+              }
+              
+              sectionDiv.appendChild(catDiv);
+            });
           }
           
           else if (title === 'Education') {
@@ -1610,8 +1678,8 @@
               const h4 = item.querySelector('h4');
               if (h3 && h4) {
                 const eduDiv = document.createElement('div');
-                eduDiv.style.cssText = 'font-size: 8px; margin-bottom: 3px;';
-                eduDiv.innerHTML = `<strong>${h3.textContent.replace('🎓', '').trim()}</strong><br>${h4.textContent}`;
+                eduDiv.style.cssText = 'font-size: 10px; margin-bottom: 8px; padding: 8px; background: #f9f9f9; border-radius: 4px;';
+                eduDiv.innerHTML = `<strong style="color: #0ba5ec;">${h3.textContent.replace('🎓', '').trim()}</strong><br><span style="font-size: 9px; color: #666;">${h4.textContent}</span>`;
                 sectionDiv.appendChild(eduDiv);
               }
             });
@@ -1619,60 +1687,47 @@
           
           else if (title === 'Languages') {
             const langItems = originalSection.querySelectorAll('.language-item');
-            const langs = Array.from(langItems).map(item => {
+            const langGrid = document.createElement('div');
+            langGrid.style.cssText = 'display: grid; grid-template-columns: 1fr 1fr; gap: 8px;';
+            
+            Array.from(langItems).forEach(item => {
               const name = item.querySelector('.language-name');
               const level = item.querySelector('.language-level');
-              return `${name?.textContent} (${level?.textContent})`;
-            }).join(', ');
+              if (name && level) {
+                const langDiv = document.createElement('div');
+                langDiv.style.cssText = 'font-size: 10px; padding: 6px; background: #f0f8ff; border-radius: 4px; text-align: center;';
+                langDiv.innerHTML = `<strong style="color: #0ba5ec;">${name.textContent}</strong><br><span style="font-size: 8px; color: #666;">${level.textContent}</span>`;
+                langGrid.appendChild(langDiv);
+              }
+            });
             
-            const langDiv = document.createElement('div');
-            langDiv.style.cssText = 'font-size: 8px;';
-            langDiv.textContent = langs;
-            sectionDiv.appendChild(langDiv);
-          }
-          
-          else if (title === 'Contact') {
-            const contactInfo = originalSection.querySelector('.contact-info');
-            if (contactInfo) {
-              const contactDiv = document.createElement('div');
-              contactDiv.style.cssText = 'font-size: 8px;';
-              const location = contactInfo.querySelector('div:first-child');
-              const linkedin = contactInfo.querySelector('div:nth-child(2) a');
-              
-              let contactText = '';
-              if (location) contactText += location.textContent.replace('📍', '').trim();
-              if (linkedin) contactText += ' • LinkedIn: ' + linkedin.getAttribute('href');
-              
-              contactDiv.textContent = contactText;
-              sectionDiv.appendChild(contactDiv);
-            }
+            sectionDiv.appendChild(langGrid);
           }
           
           tempContainer.appendChild(sectionDiv);
         }
         
-        // Add all sections in compact format
-        addCompactSection(about, 'About');
-        addCompactSection(experience, 'Experience');
-        addCompactSection(skills, 'Skills');
-        addCompactSection(expertise, 'Technical Expertise');
-        addCompactSection(education, 'Education');
-        addCompactSection(languages, 'Languages');
-        addCompactSection(contact, 'Contact');
+        // Add all sections in expanded 2-page format
+        addExpandedSection(about, 'About');
+        addExpandedSection(experience, 'Experience');
+        addExpandedSection(skills, 'Skills');
+        addExpandedSection(expertise, 'Technical Expertise');
+        addExpandedSection(education, 'Education');
+        addExpandedSection(languages, 'Languages');
         
-        // Configure PDF options for compact output
+        // Configure PDF options for 2-page layout
         const options = {
-          margin: [0.3, 0.3, 0.3, 0.3],
+          margin: [0.4, 0.4, 0.4, 0.4],
           filename: 'Pavlos_Polydoras_CV.pdf',
-          image: { type: 'jpeg', quality: 0.90 },
+          image: { type: 'jpeg', quality: 0.95 },
           html2canvas: { 
-            scale: 1.5,
+            scale: 1.8,
             useCORS: true,
             letterRendering: true,
             allowTaint: false,
             backgroundColor: '#ffffff',
-            width: 800,
-            height: 1000
+            width: 850,
+            height: 1200
           },
           jsPDF: { 
             unit: 'in', 
@@ -1680,7 +1735,10 @@
             orientation: 'portrait',
             compress: true
           },
-          pagebreak: { mode: 'avoid-all' }
+          pagebreak: { 
+            mode: ['css', 'legacy'],
+            before: '.page-break'
+          }
         };
         
         // Generate and download PDF
