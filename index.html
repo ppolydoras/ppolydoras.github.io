@@ -1486,10 +1486,12 @@
         tempContainer.style.cssText = `
           background: white;
           color: #333;
-          font-family: 'Montserrat', sans-serif;
-          padding: 20px;
-          line-height: 1.4;
-          font-size: 12px;
+          font-family: Arial, sans-serif;
+          padding: 15px;
+          line-height: 1.2;
+          font-size: 10px;
+          max-width: 700px;
+          margin: 0 auto;
         `;
         
         // Copy main content sections
@@ -1506,113 +1508,179 @@
         if (hero) {
           const heroDiv = document.createElement('div');
           heroDiv.innerHTML = `
-            <div style="text-align: center; margin-bottom: 20px;">
-              <h1 style="font-size: 24px; color: #333; margin: 0 0 8px 0; font-weight: 700;">Pavlos Polydoras</h1>
-              <h2 style="font-size: 16px; color: #666; margin: 0 0 12px 0; font-weight: 500;">Digital Transformation & AI-Driven Data Leader</h2>
-              <p style="font-size: 11px; color: #333; margin: 0 0 20px 0; max-width: 600px; margin-left: auto; margin-right: auto;">
-                Executive technology leader with 20 years' experience delivering secure, scalable systems across
-                research, government and enterprise sectors. Passionate about harnessing data and artificial intelligence
-                to unlock new possibilities.
+            <div style="text-align: center; margin-bottom: 15px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+              <h1 style="font-size: 18px; color: #333; margin: 0 0 4px 0; font-weight: bold;">Pavlos Polydoras</h1>
+              <h2 style="font-size: 12px; color: #666; margin: 0 0 6px 0; font-weight: normal;">Digital Transformation & AI-Driven Data Leader</h2>
+              <p style="font-size: 9px; color: #333; margin: 0; line-height: 1.3;">
+                Executive technology leader with 20 years' experience delivering secure, scalable systems across research, government and enterprise sectors.
               </p>
             </div>
           `;
           tempContainer.appendChild(heroDiv);
         }
         
-        // Helper function to clean and add sections
-        function addSection(section, title) {
-          if (section) {
-            const sectionDiv = document.createElement('div');
-            sectionDiv.style.cssText = 'margin-bottom: 25px; page-break-inside: avoid;';
-            
-            const titleDiv = document.createElement('h2');
-            titleDiv.style.cssText = 'font-size: 16px; color: #333; margin: 0 0 12px 0; font-weight: 600; border-bottom: 2px solid #0ba5ec; padding-bottom: 4px;';
-            titleDiv.textContent = title;
-            sectionDiv.appendChild(titleDiv);
-            
-            const contentDiv = document.createElement('div');
-            contentDiv.innerHTML = section.innerHTML;
-            
-            // Clean up the content - remove animations, backgrounds, etc.
-            const elementsToStyle = contentDiv.querySelectorAll('*');
-            elementsToStyle.forEach(el => {
-              el.style.background = 'transparent';
-              el.style.backgroundColor = 'transparent';
-              el.style.color = '#333';
-              el.style.boxShadow = 'none';
-              el.style.textShadow = 'none';
-              el.style.border = 'none';
-              if (el.classList.contains('timeline-item')) {
-                el.style.border = '1px solid #ddd';
-                el.style.marginBottom = '15px';
-                el.style.padding = '12px';
-                el.style.borderRadius = '4px';
+        // Helper function to create compact sections
+        function addCompactSection(originalSection, title, isSpecial = false) {
+          if (!originalSection) return;
+          
+          const sectionDiv = document.createElement('div');
+          sectionDiv.style.cssText = 'margin-bottom: 12px; page-break-inside: avoid;';
+          
+          const titleDiv = document.createElement('h3');
+          titleDiv.style.cssText = 'font-size: 11px; color: #333; margin: 0 0 6px 0; font-weight: bold; border-bottom: 1px solid #ccc; padding-bottom: 2px;';
+          titleDiv.textContent = title;
+          sectionDiv.appendChild(titleDiv);
+          
+          if (title === 'About') {
+            const about = originalSection.querySelector('.description p');
+            if (about) {
+              const p = document.createElement('p');
+              p.style.cssText = 'font-size: 9px; margin: 0 0 8px 0; line-height: 1.3;';
+              p.textContent = about.textContent;
+              sectionDiv.appendChild(p);
+            }
+          }
+          
+          else if (title === 'Experience') {
+            const timelineItems = originalSection.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+              const itemDiv = document.createElement('div');
+              itemDiv.style.cssText = 'margin-bottom: 8px; border-left: 2px solid #ddd; padding-left: 8px;';
+              
+              const h3 = item.querySelector('h3');
+              const h4 = item.querySelector('h4');
+              const p = item.querySelector('p');
+              const techStack = item.querySelector('.tech-stack');
+              const projects = item.querySelector('.key-projects');
+              
+              if (h3) {
+                const title = document.createElement('div');
+                title.style.cssText = 'font-size: 9px; font-weight: bold; margin-bottom: 2px;';
+                title.textContent = h3.textContent;
+                itemDiv.appendChild(title);
               }
-              if (el.classList.contains('tech-stack')) {
-                el.style.background = '#f5f5f5';
-                el.style.borderLeft = '3px solid #0ba5ec';
-                el.style.padding = '8px';
-                el.style.fontSize = '10px';
-                el.style.margin = '8px 0';
+              
+              if (h4) {
+                const period = document.createElement('div');
+                period.style.cssText = 'font-size: 8px; color: #666; margin-bottom: 3px;';
+                period.textContent = h4.textContent.replace('🕘', '').trim();
+                itemDiv.appendChild(period);
               }
-              if (el.classList.contains('project-tag')) {
-                el.style.background = '#666';
-                el.style.color = 'white';
-                el.style.padding = '2px 6px';
-                el.style.borderRadius = '3px';
-                el.style.fontSize = '9px';
-                el.style.display = 'inline-block';
-                el.style.margin = '2px 4px 2px 0';
+              
+              if (p) {
+                const desc = document.createElement('div');
+                desc.style.cssText = 'font-size: 8px; margin-bottom: 3px; line-height: 1.2;';
+                desc.textContent = p.textContent;
+                itemDiv.appendChild(desc);
               }
-              if (el.classList.contains('skill') || el.classList.contains('tech-item')) {
-                el.style.background = '#f0f0f0';
-                el.style.border = '1px solid #ddd';
-                el.style.padding = '6px 10px';
-                el.style.borderRadius = '4px';
-                el.style.fontSize = '10px';
-                el.style.display = 'inline-block';
-                el.style.margin = '3px';
+              
+              if (techStack) {
+                const tech = document.createElement('div');
+                tech.style.cssText = 'font-size: 7px; color: #666; margin-bottom: 2px;';
+                tech.textContent = techStack.textContent.replace('🔧 Key Technologies:', 'Tech:');
+                itemDiv.appendChild(tech);
+              }
+              
+              if (projects) {
+                const proj = document.createElement('div');
+                proj.style.cssText = 'font-size: 7px; color: #666;';
+                proj.textContent = projects.textContent.replace('🚀 Key Projects:', 'Projects:');
+                itemDiv.appendChild(proj);
+              }
+              
+              sectionDiv.appendChild(itemDiv);
+            });
+          }
+          
+          else if (title === 'Skills' || title === 'Technical Expertise') {
+            const skills = originalSection.querySelectorAll('.skill span, .tech-item');
+            if (skills.length > 0) {
+              const skillsText = Array.from(skills).map(skill => skill.textContent.trim()).join(' • ');
+              const skillsDiv = document.createElement('div');
+              skillsDiv.style.cssText = 'font-size: 8px; line-height: 1.3;';
+              skillsDiv.textContent = skillsText;
+              sectionDiv.appendChild(skillsDiv);
+            }
+          }
+          
+          else if (title === 'Education') {
+            const eduItems = originalSection.querySelectorAll('.education-item');
+            eduItems.forEach(item => {
+              const h3 = item.querySelector('h3');
+              const h4 = item.querySelector('h4');
+              if (h3 && h4) {
+                const eduDiv = document.createElement('div');
+                eduDiv.style.cssText = 'font-size: 8px; margin-bottom: 3px;';
+                eduDiv.innerHTML = `<strong>${h3.textContent.replace('🎓', '').trim()}</strong><br>${h4.textContent}`;
+                sectionDiv.appendChild(eduDiv);
               }
             });
-            
-            // Hide contact form
-            const contactForm = contentDiv.querySelector('.contact-form');
-            if (contactForm) {
-              contactForm.style.display = 'none';
-            }
-            
-            sectionDiv.appendChild(contentDiv);
-            tempContainer.appendChild(sectionDiv);
           }
+          
+          else if (title === 'Languages') {
+            const langItems = originalSection.querySelectorAll('.language-item');
+            const langs = Array.from(langItems).map(item => {
+              const name = item.querySelector('.language-name');
+              const level = item.querySelector('.language-level');
+              return `${name?.textContent} (${level?.textContent})`;
+            }).join(', ');
+            
+            const langDiv = document.createElement('div');
+            langDiv.style.cssText = 'font-size: 8px;';
+            langDiv.textContent = langs;
+            sectionDiv.appendChild(langDiv);
+          }
+          
+          else if (title === 'Contact') {
+            const contactInfo = originalSection.querySelector('.contact-info');
+            if (contactInfo) {
+              const contactDiv = document.createElement('div');
+              contactDiv.style.cssText = 'font-size: 8px;';
+              const location = contactInfo.querySelector('div:first-child');
+              const linkedin = contactInfo.querySelector('div:nth-child(2) a');
+              
+              let contactText = '';
+              if (location) contactText += location.textContent.replace('📍', '').trim();
+              if (linkedin) contactText += ' • LinkedIn: ' + linkedin.getAttribute('href');
+              
+              contactDiv.textContent = contactText;
+              sectionDiv.appendChild(contactDiv);
+            }
+          }
+          
+          tempContainer.appendChild(sectionDiv);
         }
         
-        // Add all sections
-        addSection(about, 'About');
-        addSection(experience, 'Experience');
-        addSection(skills, 'Skills');
-        addSection(expertise, 'Technical Expertise');
-        addSection(education, 'Education');
-        addSection(languages, 'Languages');
-        addSection(contact, 'Contact');
+        // Add all sections in compact format
+        addCompactSection(about, 'About');
+        addCompactSection(experience, 'Experience');
+        addCompactSection(skills, 'Skills');
+        addCompactSection(expertise, 'Technical Expertise');
+        addCompactSection(education, 'Education');
+        addCompactSection(languages, 'Languages');
+        addCompactSection(contact, 'Contact');
         
-        // Configure PDF options
+        // Configure PDF options for compact output
         const options = {
-          margin: [0.5, 0.5, 0.5, 0.5],
+          margin: [0.3, 0.3, 0.3, 0.3],
           filename: 'Pavlos_Polydoras_CV.pdf',
-          image: { type: 'jpeg', quality: 0.95 },
+          image: { type: 'jpeg', quality: 0.90 },
           html2canvas: { 
-            scale: 2,
+            scale: 1.5,
             useCORS: true,
             letterRendering: true,
             allowTaint: false,
-            backgroundColor: '#ffffff'
+            backgroundColor: '#ffffff',
+            width: 800,
+            height: 1000
           },
           jsPDF: { 
             unit: 'in', 
             format: 'a4', 
             orientation: 'portrait',
             compress: true
-          }
+          },
+          pagebreak: { mode: 'avoid-all' }
         };
         
         // Generate and download PDF
