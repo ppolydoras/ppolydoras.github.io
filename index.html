@@ -18,233 +18,668 @@
       --text-light: #f5f5f5;
       --text-dark: #1e293b;
       --timeline-line: rgba(255,255,255,0.2);
+      --card-bg: rgba(255,255,255,0.05);
+      --nav-bg: rgba(14, 26, 41, 0.95);
     }
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Montserrat', sans-serif;
       background-color: var(--bg-dark);
       color: var(--text-light);
+      overflow-x: hidden;
     }
     a { color: var(--primary); text-decoration: none; }
     a:hover { text-decoration: underline; }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--nav-bg);
+      backdrop-filter: blur(10px);
+      padding: 1rem 0;
+      z-index: 1000;
+      transform: translateY(-100%);
+      transition: transform 0.3s ease;
+    }
+    .navbar.visible {
+      transform: translateY(0);
+    }
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(11,165,236,0.4);
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-light);
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+    .nav-links a:hover {
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      z-index: 1001;
+      transition: width 0.1s ease;
+    }
+
+    /* Background Animation */
+    .background-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .particle {
+      position: absolute;
+      background: rgba(11, 165, 236, 0.1);
+      border-radius: 50%;
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+
     /* Hero section */
     .hero {
       background: linear-gradient(135deg, #001f3f 0%, #0e1a29 100%);
-      min-height: 80vh;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       text-align: center;
       padding: 40px 20px;
+      position: relative;
     }
     .hero h1 {
-      font-size: 3rem;
+      font-size: 3.5rem;
       font-weight: 700;
       margin-bottom: 10px;
       color: var(--primary);
-      text-shadow: 0 0 10px rgba(11,165,236,0.4);
+      text-shadow: 0 0 20px rgba(11,165,236,0.5);
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.5s forwards;
     }
-    .hero h2 {
-      font-size: 1.5rem;
+    .hero .tagline {
+      font-size: 1.8rem;
       font-weight: 500;
       margin-bottom: 25px;
       color: var(--text-light);
-      opacity: 0.9;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.7s forwards;
+      min-height: 2.2rem;
     }
     .hero p {
       max-width: 800px;
-      font-size: 1rem;
-      opacity: 0.85;
+      font-size: 1.1rem;
+      opacity: 0;
+      margin-bottom: 40px;
+      animation: fadeInUp 1s ease 0.9s forwards;
+      line-height: 1.6;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
       margin-bottom: 30px;
+      opacity: 0;
+      animation: fadeInUp 1s ease 1.1s forwards;
+    }
+    .btn {
+      padding: 12px 30px;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .btn-primary {
+      background: linear-gradient(45deg, var(--primary), #1e90ff);
+      color: white;
+      box-shadow: 0 4px 15px rgba(11, 165, 236, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(11, 165, 236, 0.4);
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-light);
+      border: 2px solid var(--primary);
+    }
+    .btn-secondary:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+      text-decoration: none;
     }
     .scroll-indicator {
       margin-top: 20px;
       animation: bounce 2s infinite;
       color: var(--primary);
+      opacity: 0;
+      animation: fadeInUp 1s ease 1.3s forwards, bounce 2s ease 1.8s infinite;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     @keyframes bounce {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-8px); }
     }
+
     /* Section container */
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 60px 20px;
     }
     section {
-      margin-bottom: 60px;
+      margin-bottom: 80px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+    section.animate {
+      opacity: 1;
+      transform: translateY(0);
     }
     section h2 {
-      font-size: 2rem;
-      font-weight: 600;
-      margin-bottom: 20px;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 30px;
       color: var(--primary);
+      text-align: center;
+      position: relative;
     }
+    section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 2px;
+    }
+
     /* About section */
     .about {
       display: flex;
       flex-wrap: wrap;
-      gap: 40px;
+      gap: 50px;
       align-items: center;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
     }
     .about .avatar {
-      flex: 0 0 200px;
-      height: 200px;
-      width: 200px;
+      flex: 0 0 220px;
+      height: 220px;
+      width: 220px;
       border-radius: 50%;
       object-fit: cover;
       overflow: hidden;
-      box-shadow: 0 0 20px rgba(11,165,236,0.4);
+      box-shadow: 0 0 30px rgba(11,165,236,0.5);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .about .avatar:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 40px rgba(11,165,236,0.7);
     }
     .about .description {
       flex: 1;
-      min-width: 280px;
+      min-width: 300px;
       color: var(--text-light);
-      line-height: 1.5;
+      line-height: 1.7;
+      font-size: 1.1rem;
     }
+
     /* Timeline */
     .timeline {
       position: relative;
-      padding-left: 40px;
+      padding-left: 50px;
     }
     .timeline::before {
       content: '';
       position: absolute;
-      left: 15px;
+      left: 20px;
       top: 0;
       bottom: 0;
-      width: 2px;
-      background: var(--timeline-line);
+      width: 3px;
+      background: linear-gradient(180deg, var(--primary), var(--accent));
+      border-radius: 2px;
     }
     .timeline-item {
       position: relative;
-      margin-bottom: 40px;
+      margin-bottom: 50px;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+    .timeline-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border-color: var(--primary);
     }
     .timeline-item::before {
       content: '\f111';
       font-family: 'Font Awesome 6 Free';
       font-weight: 900;
       position: absolute;
-      left: -6px;
-      top: 4px;
-      font-size: 10px;
+      left: -15px;
+      top: 35px;
+      font-size: 14px;
       color: var(--primary);
       background: var(--bg-dark);
+      padding: 8px;
+      border-radius: 50%;
+      border: 3px solid var(--primary);
     }
     .timeline-item h3 {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 600;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       color: var(--accent);
     }
     .timeline-item h4 {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 500;
-      color: rgba(245,245,245,0.7);
-      margin-bottom: 10px;
+      color: rgba(245,245,245,0.8);
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .timeline-item h4::before {
+      content: '\f017';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: var(--primary);
     }
     .timeline-item p {
-      font-size: 0.95rem;
-      color: rgba(245,245,245,0.85);
-      margin-bottom: 8px;
+      font-size: 1rem;
+      color: rgba(245,245,245,0.9);
+      margin-bottom: 15px;
+      line-height: 1.6;
     }
     .timeline-item ul {
-      margin-left: 16px;
-      list-style-type: square;
+      margin-left: 20px;
+      list-style: none;
     }
     .timeline-item ul li {
-      margin-bottom: 5px;
-      font-size: 0.9rem;
-      color: rgba(245,245,245,0.8);
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      color: rgba(245,245,245,0.85);
+      position: relative;
+      padding-left: 20px;
     }
+    .timeline-item ul li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-size: 0.8rem;
+    }
+
     /* Skills */
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
     .skill {
-      background: rgba(255,255,255,0.05);
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 15px;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+    }
+    .skill:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      border-color: var(--primary);
     }
     .skill i {
-      font-size: 1.5rem;
+      font-size: 2rem;
       color: var(--primary);
+      transition: transform 0.3s ease;
+    }
+    .skill:hover i {
+      transform: scale(1.1);
     }
     .skill span {
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: var(--text-light);
+      font-weight: 500;
     }
+
     /* Education */
     .education-item {
-      margin-bottom: 30px;
+      margin-bottom: 40px;
+      background: var(--card-bg);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s ease;
+    }
+    .education-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      border-color: var(--primary);
     }
     .education-item h3 {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       font-weight: 600;
       color: var(--accent);
-      margin-bottom: 4px;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .education-item h3::before {
+      content: '\f19d';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: var(--primary);
     }
     .education-item h4 {
-      font-size: 0.9rem;
+      font-size: 1rem;
       font-weight: 500;
-      color: rgba(245,245,245,0.7);
+      color: rgba(245,245,245,0.8);
     }
+
     /* Contact */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
     .contact-info {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      font-size: 0.95rem;
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .contact-info h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--primary);
     }
     .contact-info div {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 12px;
       color: rgba(245,245,245,0.9);
+      margin-bottom: 15px;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .contact-info div:hover {
+      color: var(--primary);
     }
     .contact-info i {
       color: var(--primary);
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      width: 20px;
     }
+    .contact-form {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .contact-form h3 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--text-light);
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.05);
+      color: var(--text-light);
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 10px rgba(11,165,236,0.3);
+    }
+    .form-group textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
     /* Footer */
     footer {
-      background: #0a1726;
-      padding: 20px;
+      background: linear-gradient(135deg, #0a1726, #001f3f);
+      padding: 40px 20px;
       text-align: center;
-      font-size: 0.8rem;
-      color: rgba(245,245,245,0.6);
+      font-size: 0.9rem;
+      color: rgba(245,245,245,0.7);
+      border-top: 1px solid rgba(255,255,255,0.1);
     }
-    @media (max-width: 600px) {
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--nav-bg);
+        flex-direction: column;
+        padding: 20px;
+        gap: 1rem;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .mobile-menu-toggle {
+        display: block;
+      }
+      .hero h1 { font-size: 2.5rem; }
+      .hero .tagline { font-size: 1.3rem; }
+      .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      .about {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+      }
+      .about .avatar {
+        flex: none;
+      }
+      .timeline {
+        padding-left: 30px;
+      }
+      .timeline::before {
+        left: 15px;
+      }
+      .timeline-item::before {
+        left: -10px;
+      }
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+      section h2 {
+        font-size: 2rem;
+      }
+    }
+    @media (max-width: 480px) {
       .hero h1 { font-size: 2rem; }
-      .hero h2 { font-size: 1.1rem; }
+      .hero .tagline { font-size: 1.1rem; }
+      .container {
+        padding: 40px 15px;
+      }
+      .about,
+      .contact-info,
+      .contact-form,
+      .education-item,
+      .timeline-item {
+        padding: 20px;
+      }
     }
   </style>
 </head>
 <body>
-  <section class="hero">
+  <!-- Progress Bar -->
+  <div class="progress-bar"></div>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-logo">PP</div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mobile-menu-toggle">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Background Animation -->
+  <div class="background-animation"></div>
+
+  <section class="hero" id="home">
     <h1>Pavlos&nbsp;Polydoras</h1>
-    <h2>Digital Transformation &amp; AI‑Driven Data Leader</h2>
+    <div class="tagline" id="typewriter"></div>
     <p>
-      Executive technology leader with 20&nbsp;years’ experience delivering secure, scalable systems across
+      Executive technology leader with 20&nbsp;years' experience delivering secure, scalable systems across
       research, government and enterprise sectors. Passionate about harnessing data and artificial intelligence
       to unlock new possibilities.
     </p>
+    <div class="hero-buttons">
+      <a href="#contact" class="btn btn-primary">
+        <i class="fas fa-envelope"></i>
+        Get In Touch
+      </a>
+      <a href="#about" class="btn btn-secondary">
+        <i class="fas fa-user"></i>
+        Learn More
+      </a>
+    </div>
     <div class="scroll-indicator">
       <i class="fas fa-chevron-down"></i>
     </div>
   </section>
+
   <div class="container">
     <section id="about">
       <h2>About</h2>
@@ -252,8 +687,8 @@
         <img src="img/profile.jpeg" alt="Pavlos Polydoras" class="avatar">
         <div class="description">
           <p>
-            I’m a software architect turned technology executive who pairs deep engineering expertise with a
-            strategic outlook. Over the past two decades I’ve led high‑impact projects that span cloud
+            I'm a software architect turned technology executive who pairs deep engineering expertise with a
+            strategic outlook. Over the past two decades I've led high‑impact projects that span cloud
             infrastructure, distributed data systems and AI‑powered analytics. I thrive on building collaborative
             teams, mentoring engineers and translating complex requirements into innovative products that advance
             digital transformation.
@@ -261,6 +696,7 @@
         </div>
       </div>
     </section>
+
     <section id="experience">
       <h2>Experience</h2>
       <div class="timeline">
@@ -268,7 +704,7 @@
           <h3>VP of Engineering &amp; General Manager, Greece – RAW Labs</h3>
           <h4>Jul&nbsp;2021 – Present</h4>
           <p>
-            Lead creation of chat and analytics services built on client data using <strong>MXCP</strong>, RAW Labs’ MCP framework.
+            Lead creation of chat and analytics services built on client data using <strong>MXCP</strong>, RAW Labs' MCP framework.
             Guide projects from POC through SOW, design, implementation and delivery.
           </p>
           <ul>
@@ -282,7 +718,7 @@
           <h4>Jan&nbsp;2019 – Jun&nbsp;2021</h4>
           <p>
             Oversaw all technical operations for Palowise, a SaaS platform delivering real‑time social and web analytics.
-            Led the transition from PaloPro to Palowise, expanding the platform’s capabilities and market reach.
+            Led the transition from PaloPro to Palowise, expanding the platform's capabilities and market reach.
           </p>
           <ul>
             <li>Designed scalable ingestion pipelines and multilingual NLP models.</li>
@@ -343,6 +779,7 @@
         </div>
       </div>
     </section>
+
     <section id="skills">
       <h2>Skills</h2>
       <div class="skills-grid">
@@ -356,6 +793,7 @@
         <div class="skill"><i class="fas fa-users"></i><span>Team Leadership &amp; Mentoring</span></div>
       </div>
     </section>
+
     <section id="education">
       <h2>Education</h2>
       <div class="education-item">
@@ -367,16 +805,192 @@
         <h4>National &amp; Kapodistrian University of Athens · 1999–2004</h4>
       </div>
     </section>
+
     <section id="contact">
       <h2>Contact</h2>
-      <div class="contact-info">
-        <div><i class="fas fa-map-marker-alt"></i> Athens, Greece</div>
-        <div><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/ppolydoras/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ppolydoras</a></div>
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Let's Connect</h3>
+          <div><i class="fas fa-map-marker-alt"></i> Athens, Greece</div>
+          <div><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/ppolydoras/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ppolydoras</a></div>
+          <div><i class="fas fa-envelope"></i><span>Available on LinkedIn</span></div>
+        </div>
+        <div class="contact-form">
+          <h3>Send a Message</h3>
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="handleFormSubmit()">
+              <i class="fas fa-paper-plane"></i>
+              Send Message
+            </button>
+          </form>
+        </div>
       </div>
     </section>
   </div>
+
   <footer>
     © 2025 Pavlos Polydoras · All rights reserved.
   </footer>
+
+  <script>
+    // Typewriter effect
+    const typewriterText = [
+      "Digital Transformation Leader",
+      "AI-Driven Data Expert", 
+      "Technology Executive",
+      "Software Architect"
+    ];
+    let currentText = 0;
+    let currentChar = 0;
+    let isDeleting = false;
+    const typewriterElement = document.getElementById('typewriter');
+
+    function typewriter() {
+      const text = typewriterText[currentText];
+      
+      if (isDeleting) {
+        typewriterElement.textContent = text.substring(0, currentChar - 1);
+        currentChar--;
+      } else {
+        typewriterElement.textContent = text.substring(0, currentChar + 1);
+        currentChar++;
+      }
+
+      if (!isDeleting && currentChar === text.length) {
+        setTimeout(() => isDeleting = true, 2000);
+      } else if (isDeleting && currentChar === 0) {
+        isDeleting = false;
+        currentText = (currentText + 1) % typewriterText.length;
+      }
+
+      const speed = isDeleting ? 50 : 100;
+      setTimeout(typewriter, speed);
+    }
+
+    // Start typewriter effect after page loads
+    window.addEventListener('load', () => {
+      setTimeout(typewriter, 1500);
+    });
+
+    // Navigation scroll behavior
+    window.addEventListener('scroll', () => {
+      const navbar = document.querySelector('.navbar');
+      const progressBar = document.querySelector('.progress-bar');
+      
+      // Show/hide navbar
+      if (window.scrollY > 100) {
+        navbar.classList.add('visible');
+      } else {
+        navbar.classList.remove('visible');
+      }
+
+      // Update progress bar
+      const scrollTop = window.pageYOffset;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const scrollPercent = (scrollTop / docHeight) * 100;
+      progressBar.style.width = scrollPercent + '%';
+
+      // Animate sections on scroll
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        const windowHeight = window.innerHeight;
+        
+        if (scrollTop > (sectionTop - windowHeight + 100)) {
+          section.classList.add('animate');
+        }
+      });
+    });
+
+    // Mobile menu toggle
+    document.querySelector('.mobile-menu-toggle').addEventListener('click', () => {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Create background particles
+    function createParticles() {
+      const container = document.querySelector('.background-animation');
+      const particleCount = 15;
+
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        const size = Math.random() * 4 + 2;
+        const x = Math.random() * 100;
+        const y = Math.random() * 100;
+        const delay = Math.random() * 6;
+        
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        particle.style.left = x + '%';
+        particle.style.top = y + '%';
+        particle.style.animationDelay = delay + 's';
+        
+        container.appendChild(particle);
+      }
+    }
+
+    // Form submission handler
+    function handleFormSubmit() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+
+      if (!name || !email || !subject || !message) {
+        alert('Please fill in all fields.');
+        return;
+      }
+
+      // Create mailto link
+      const mailtoLink = `mailto:your-email@example.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+      
+      alert('Thank you for your message! Your email client will open to send the message.');
+      window.location.href = mailtoLink;
+      
+      // Reset form
+      document.querySelector('.contact-form form').reset();
+    }
+
+    // Initialize particles and animations
+    window.addEventListener('load', () => {
+      createParticles();
+      
+      // Trigger initial animation check
+      window.dispatchEvent(new Event('scroll'));
+    });
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>
