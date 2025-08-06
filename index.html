@@ -96,8 +96,10 @@
     .about .avatar {
       flex: 0 0 200px;
       height: 200px;
+      width: 200px;
       border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, var(--primary) 0%, var(--secondary) 70%);
+      object-fit: cover;
+      overflow: hidden;
       box-shadow: 0 0 20px rgba(11,165,236,0.4);
     }
     .about .description {
@@ -247,7 +249,7 @@
     <section id="about">
       <h2>About</h2>
       <div class="about">
-        <div class="avatar"></div>
+        <img src="img/profile.jpeg" alt="Pavlos Polydoras" class="avatar">
         <div class="description">
           <p>
             I’m a software architect turned technology executive who pairs deep engineering expertise with a
