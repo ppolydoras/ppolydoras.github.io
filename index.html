@@ -1620,7 +1620,8 @@
           <h3><i class="fas fa-cloud"></i>Cloud & Infrastructure</h3>
           <div class="tech-list">
             <span class="tech-item">AWS (Expert)</span>
-            <span class="tech-item">GCP (Expert: Cloud Run, Vertex AI, BigQuery, Cloud Storage, IAM)</span>
+            <span class="tech-item">GCP (Expert)</span>
+            <span class="tech-item">GCP Services (Cloud Run, Vertex AI, BigQuery)</span>
             <span class="tech-item">Azure (Basic)</span>
             <span class="tech-item">Docker</span>
             <span class="tech-item">Docker Compose</span>
@@ -1686,6 +1687,7 @@
           <h3>Let's Connect</h3>
           <div><i class="fas fa-map-marker-alt"></i> Athens, Greece</div>
           <div><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/ppolydoras/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ppolydoras</a></div>
+          <div><i class="fab fa-github"></i><a href="https://github.com/ppolydoras" target="_blank" rel="noopener noreferrer">github.com/ppolydoras</a> <span style="font-size: 0.85rem; opacity: 0.8;">(929+ contributions/year)</span></div>
           <div><i class="fas fa-envelope"></i><span>Available on LinkedIn</span></div>
         </div>
         <div class="contact-form">
@@ -1845,13 +1847,27 @@
 
     // Download CV function - Generate PDF with hardcoded content to ensure it works
     async function downloadCV() {
+      const downloadButton = event?.target || document.querySelector('.btn-download');
+      const originalText = downloadButton?.innerHTML || '';
+      
       try {
+        // Show loading state
+        if (downloadButton) {
+          downloadButton.disabled = true;
+          downloadButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+        }
+        
         // Import html2pdf library dynamically
         const script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
         document.head.appendChild(script);
         
-        await new Promise(resolve => script.onload = resolve);
+        await new Promise((resolve, reject) => {
+          script.onload = resolve;
+          script.onerror = () => reject(new Error('Failed to load PDF library'));
+          // Timeout after 10 seconds
+          setTimeout(() => reject(new Error('PDF library loading timeout')), 10000);
+        });
         
         // Create a simple, reliable PDF content
         const tempContainer = document.createElement('div');
@@ -2076,9 +2092,32 @@
         // Generate and download PDF
         await html2pdf().set(options).from(tempContainer).save();
         
+        // Restore button state on success
+        if (downloadButton) {
+          downloadButton.disabled = false;
+          downloadButton.innerHTML = originalText;
+        }
+        
       } catch (error) {
         console.error('PDF generation failed:', error);
-        alert('PDF generation failed. Please try again or contact support.');
+        
+        // Restore button state on error
+        if (downloadButton) {
+          downloadButton.disabled = false;
+          downloadButton.innerHTML = originalText;
+        }
+        
+        // Show user-friendly error message
+        let errorMessage = 'PDF generation failed. ';
+        if (error.message.includes('timeout')) {
+          errorMessage += 'The request took too long. Please check your internet connection and try again.';
+        } else if (error.message.includes('load')) {
+          errorMessage += 'Failed to load PDF library. Please check your internet connection and try again.';
+        } else {
+          errorMessage += 'Please try again or contact support if the problem persists.';
+        }
+        
+        alert(errorMessage);
       }
     }
 
