@@ -1926,10 +1926,14 @@
       }
     }
 
-    // Download CV function - Serve static PDF file
+    // Download CV function - Force download of static PDF file
     function downloadCV() {
-      // Simply redirect to the static PDF file
-      window.location.href = './Pavlos_Polydoras_CV.pdf';
+      const link = document.createElement('a');
+      link.href = './Pavlos_Polydoras_CV.pdf';
+      link.download = 'Pavlos_Polydoras_CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     }
     
 
