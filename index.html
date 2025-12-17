@@ -1821,19 +1821,6 @@
     // Download CV function - Generate PDF with hardcoded content to ensure it works
     async function downloadCV() {
       try {
-        // Safari fallback - use static PDF
-        const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-        if (isSafari) {
-          console.log('Safari detected - using static PDF fallback');
-          const link = document.createElement('a');
-          link.href = './Pavlos_Polydoras_CV_Static.pdf';
-          link.download = 'Pavlos_Polydoras_CV.pdf';
-          link.style.display = 'none';
-          document.body.appendChild(link);
-          link.click();
-          document.body.removeChild(link);
-          return;
-        }
         // Import html2pdf library dynamically
         const script = document.createElement('script');
         script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
