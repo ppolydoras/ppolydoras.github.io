@@ -3,7 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pavlos Polydoras · Portfolio</title>
+  <title>Pavlos Polydoras · Lead Data & AI Architect | Portfolio</title>
+  <meta name="description" content="Lead Data & AI Architect with 20+ years of experience in cloud infrastructure, distributed systems, and AI-powered analytics. Expert in AWS, GCP, LangChain, and enterprise AI platforms.">
+  <meta name="keywords" content="Data Architect, AI Architect, Cloud Computing, AWS, GCP, LangChain, Machine Learning, Software Architecture, Digital Transformation, Enterprise AI">
+  <meta name="author" content="Pavlos Polydoras">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ppolydoras.github.io/">
+  <meta property="og:title" content="Pavlos Polydoras · Lead Data & AI Architect">
+  <meta property="og:description" content="Lead Data & AI Architect with 20+ years of experience delivering secure, scalable systems across research, government and enterprise sectors.">
+  <meta property="og:image" content="https://ppolydoras.github.io/img/profile.jpeg">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://ppolydoras.github.io/">
+  <meta property="twitter:title" content="Pavlos Polydoras · Lead Data & AI Architect">
+  <meta property="twitter:description" content="Lead Data & AI Architect with 20+ years of experience delivering secure, scalable systems across research, government and enterprise sectors.">
+  <meta property="twitter:image" content="https://ppolydoras.github.io/img/profile.jpeg">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👨‍💻</text></svg>">
+  
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Pavlos Polydoras",
+    "jobTitle": "Lead Data & AI Architect",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Holisticon Poland"
+    },
+    "url": "https://ppolydoras.github.io",
+    "sameAs": [
+      "https://www.linkedin.com/in/ppolydoras"
+    ],
+    "email": "p.polydoras@yahoo.gr",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Athens",
+      "addressCountry": "GR"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "National & Kapodistrian University of Athens"
+    }
+  }
+  </script>
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome Icons -->
@@ -106,6 +154,46 @@
       color: var(--text-light);
       font-size: 1.5rem;
       cursor: pointer;
+    }
+    .theme-toggle {
+      background: none;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 8px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      margin-left: 1rem;
+    }
+    .theme-toggle:hover {
+      background: var(--primary);
+      color: var(--bg-dark);
+    }
+    body.light-mode {
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+    }
+    body.light-mode .navbar {
+      background: rgba(249, 251, 254, 0.95);
+    }
+    body.light-mode .about,
+    body.light-mode .timeline-item,
+    body.light-mode .skill,
+    body.light-mode .expertise-category,
+    body.light-mode .language-item,
+    body.light-mode .education-item,
+    body.light-mode .contact-info,
+    body.light-mode .contact-form {
+      background: rgba(255, 255, 255, 0.8);
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    body.light-mode .nav-links a,
+    body.light-mode .hero p,
+    body.light-mode .about .description,
+    body.light-mode .timeline-item p,
+    body.light-mode .timeline-item ul li {
+      color: var(--text-dark);
     }
 
     /* Progress Bar */
@@ -1149,19 +1237,22 @@
   <div class="progress-bar"></div>
 
   <!-- Navigation -->
-  <nav class="navbar">
+  <nav class="navbar" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
-      <div class="nav-logo">PP</div>
-      <ul class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-                 <li><a href="#skills">Skills</a></li>
-         <li><a href="#education">Education</a></li>
-         <li><a href="#expertise">Expertise</a></li>
-         <li><a href="#contact">Contact</a></li>
+      <div class="nav-logo" aria-label="Pavlos Polydoras">PP</div>
+      <ul class="nav-links" role="menubar">
+        <li role="none"><a href="#home" role="menuitem" aria-label="Go to home section">Home</a></li>
+        <li role="none"><a href="#about" role="menuitem" aria-label="Go to about section">About</a></li>
+        <li role="none"><a href="#experience" role="menuitem" aria-label="Go to experience section">Experience</a></li>
+        <li role="none"><a href="#skills" role="menuitem" aria-label="Go to skills section">Skills</a></li>
+        <li role="none"><a href="#education" role="menuitem" aria-label="Go to education section">Education</a></li>
+        <li role="none"><a href="#expertise" role="menuitem" aria-label="Go to expertise section">Expertise</a></li>
+        <li role="none"><a href="#contact" role="menuitem" aria-label="Go to contact section">Contact</a></li>
       </ul>
-      <button class="mobile-menu-toggle">
+      <button class="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+        <i class="fas fa-moon" id="theme-icon"></i>
+      </button>
+      <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
         <i class="fas fa-bars"></i>
       </button>
     </div>
@@ -1170,7 +1261,7 @@
   <!-- Background Animation -->
   <div class="background-animation"></div>
 
-  <section class="hero" id="home">
+  <section class="hero" id="home" aria-label="Hero section">
     <h1>Pavlos&nbsp;Polydoras</h1>
     <div class="tagline" id="typewriter"></div>
     <p>
@@ -1198,10 +1289,10 @@
   </section>
 
   <div class="container">
-    <section id="about">
-      <h2>About</h2>
+    <section id="about" aria-labelledby="about-heading">
+      <h2 id="about-heading">About</h2>
       <div class="about">
-        <img src="img/profile.jpeg" alt="Pavlos Polydoras" class="avatar">
+        <img src="img/profile.jpeg" alt="Pavlos Polydoras" class="avatar" loading="lazy">
         <div class="description">
           <p>
             I'm a software architect turned technology executive who pairs deep engineering expertise with a
@@ -1214,16 +1305,36 @@
       </div>
     </section>
 
-    <section id="experience">
-      <h2>Experience</h2>
+    <section id="experience" aria-labelledby="experience-heading">
+      <h2 id="experience-heading">Experience</h2>
       <div class="time-axis-label">
         <span class="time-label">The Flow of Time</span>
         <span class="time-subtitle">"The world is not a collection of things, it is a collection of events." — Carlo Rovelli</span>
       </div>
       <div class="timeline">
         <div class="timeline-item">
+          <h3>Lead Data &amp; AI Architect – Holisticon Poland</h3>
+          <h4>Oct&nbsp;2025 – Present</h4>
+          <p>
+            Designing and leading the architecture of agentic data &amp; AI platform. Working closely with cross-functional teams to turn business needs into production-grade AI solutions, from early PoCs to robust, scalable systems.
+          </p>
+          <ul>
+            <li>Architect and lead development of agentic AI platforms for enterprise clients.</li>
+            <li>Design scalable data architectures supporting AI/ML workflows and real-time analytics.</li>
+            <li>Collaborate with cross-functional teams to deliver production-grade AI solutions.</li>
+            <li>Guide projects from concept through PoC to production deployment.</li>
+          </ul>
+          <div class="tech-stack">
+            <strong>🔧 Key Technologies:</strong> Python, AWS, GCP, LangChain, OpenAI APIs, Claude APIs, Vector Databases, MCP/MXCP, Docker, Kubernetes, Data Architecture, AI/ML Platforms
+          </div>
+          <div class="key-projects">
+            <strong>🚀 Key Projects:</strong>
+            <span class="project-tag">GE Appliances AI Labs Platform</span>
+          </div>
+        </div>
+        <div class="timeline-item">
           <h3>VP of Engineering &amp; General Manager, Greece – RAW Labs</h3>
-          <h4>Jul&nbsp;2021 – Present</h4>
+          <h4>Jul&nbsp;2021 – Nov&nbsp;2025</h4>
           <p>
             Lead creation of chat and analytics services built on client data using <strong>MXCP</strong>, RAW Labs' MCP framework.
             Guide projects from POC through SOW, design, implementation and delivery.
@@ -1350,8 +1461,8 @@
       </div>
     </section>
 
-    <section id="skills">
-      <h2>Skills</h2>
+    <section id="skills" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Skills</h2>
       <div class="skills-grid">
         <div class="skill"><i class="fas fa-brain"></i><span>AI &amp; Machine Learning</span></div>
         <div class="skill"><i class="fas fa-chart-line"></i><span>Digital Transformation Strategy</span></div>
@@ -1364,8 +1475,8 @@
       </div>
     </section>
 
-    <section id="education">
-      <h2>Education</h2>
+    <section id="education" aria-labelledby="education-heading">
+      <h2 id="education-heading">Education</h2>
       <div class="education-item">
         <h3>M.Sc. in Information Technology</h3>
         <h4>National &amp; Kapodistrian University of Athens · 2004–2009</h4>
@@ -1376,8 +1487,8 @@
       </div>
     </section>
 
-    <section id="expertise">
-      <h2>Technical Expertise</h2>
+    <section id="expertise" aria-labelledby="expertise-heading">
+      <h2 id="expertise-heading">Technical Expertise</h2>
       <div class="expertise-grid">
         <div class="expertise-category">
           <h3><i class="fas fa-cloud"></i>Cloud & Infrastructure</h3>
@@ -1426,8 +1537,8 @@
       </div>
     </section>
 
-    <section id="languages">
-      <h2>Languages</h2>
+    <section id="languages" aria-labelledby="languages-heading">
+      <h2 id="languages-heading">Languages</h2>
       <div class="languages-grid">
         <div class="language-item">
           <div class="language-name">Greek</div>
@@ -1440,8 +1551,8 @@
       </div>
     </section>
 
-    <section id="contact">
-      <h2>Contact</h2>
+    <section id="contact" aria-labelledby="contact-heading">
+      <h2 id="contact-heading">Contact</h2>
       <div class="contact-container">
         <div class="contact-info">
           <h3>Let's Connect</h3>
@@ -1676,8 +1787,20 @@
             <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 10px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">Experience</h3>
             
             <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
+              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Lead Data & AI Architect – Holisticon Poland</div>
+              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Oct 2025 – Present</div>
+              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Designing and leading the architecture of agentic data & AI platform. Working closely with cross-functional teams to turn business needs into production-grade AI solutions, from early PoCs to robust, scalable systems.</div>
+              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Architect and lead development of agentic AI platforms for enterprise clients.</div>
+              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Design scalable data architectures supporting AI/ML workflows and real-time analytics.</div>
+              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Collaborate with cross-functional teams to deliver production-grade AI solutions.</div>
+              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Guide projects from concept through PoC to production deployment.</div>
+              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: Python, AWS, GCP, LangChain, OpenAI APIs, Claude APIs, Vector Databases, MCP/MXCP, Docker, Kubernetes, Data Architecture, AI/ML Platforms</div>
+              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: GE Appliances AI Labs Platform</div>
+            </div>
+
+            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
               <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">VP of Engineering & General Manager, Greece – RAW Labs</div>
-              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Jul 2021 – Present</div>
+              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Jul 2021 – Nov 2025</div>
               <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Lead creation of chat and analytics services built on client data using MXCP, RAW Labs' MCP framework. Guide projects from POC through SOW, design, implementation and delivery.</div>
               <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Architect AI models and agent‑based applications aligned with customer objectives.</div>
               <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Coordinate engineering teams and manage stakeholder relationships.</div>
@@ -1843,6 +1966,34 @@
         alert('PDF generation failed. Please try again or contact support.');
       }
     }
+
+    // Theme Toggle
+    const themeToggle = document.querySelector('.theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const body = document.body;
+    
+    // Check for saved theme preference or default to dark mode
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    if (currentTheme === 'light') {
+      body.classList.add('light-mode');
+      themeIcon.classList.remove('fa-moon');
+      themeIcon.classList.add('fa-sun');
+    }
+    
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('light-mode');
+      const isLightMode = body.classList.contains('light-mode');
+      
+      if (isLightMode) {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+        localStorage.setItem('theme', 'light');
+      } else {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+        localStorage.setItem('theme', 'dark');
+      }
+    });
 
     // Initialize particles and animations
     window.addEventListener('load', () => {
