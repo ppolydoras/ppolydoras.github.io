@@ -52,7 +52,9 @@
     }
   }
   </script>
-  <!-- Google Fonts -->
+  <!-- Google Fonts with performance optimizations -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-xX2YoVTNKx4ezpswKbZ8rm9w4kzbsEZuEx6bykAHjXKbZo9btzLNafJO2V7eeXOA+AoS9MFuQmqZqkqw7nj2Ng==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -1418,7 +1420,7 @@
     <section id="about" aria-labelledby="about-heading">
       <h2 id="about-heading">About</h2>
       <div class="about">
-        <img src="img/profile.jpeg" alt="Pavlos Polydoras" class="avatar" loading="lazy">
+        <img src="img/profile.jpeg" alt="Pavlos Polydoras" class="avatar" loading="lazy" fetchpriority="high">
         <div class="description">
           <p>
             I'm a software architect turned technology executive who pairs deep engineering expertise with a
@@ -1470,6 +1472,7 @@
             <li>Coordinate engineering teams and manage stakeholder relationships.</li>
             <li>Develop business proposals and go‑to‑market strategies for MXCP‑based services.</li>
             <li>Set up and manage the Greece company branch, including operations, hiring, budgeting and compliance.</li>
+            <li>Led cross-functional teams across multiple international projects, delivering enterprise AI solutions for major clients.</li>
           </ul>
           <div class="tech-stack">
             <strong>🔧 Key Technologies:</strong> Python, Scala, Java, AWS (Expert), GCP (Basic), Azure (Basic), LangChain, OpenAI APIs, Vector Databases, MCP/MXCP, Data Connectors, Identity & Access Management (Keycloak, Auth0)
@@ -1489,8 +1492,8 @@
             Led the transition from PaloPro to Palowise, expanding the platform's capabilities and market reach.
           </p>
           <ul>
-            <li>Designed scalable ingestion pipelines and multilingual NLP models.</li>
-            <li>Built analytics dashboards providing customized insights.</li>
+            <li>Designed scalable ingestion pipelines processing millions of social media posts daily with multilingual NLP models.</li>
+            <li>Built analytics dashboards providing customized insights for enterprise clients.</li>
             <li>Mentored engineering teams and aligned technology roadmap with business goals.</li>
           </ul>
           <div class="tech-stack">
@@ -1588,7 +1591,7 @@
     </section>
 
     <section id="skills" aria-labelledby="skills-heading">
-      <h2 id="skills-heading">Skills</h2>
+      <h2 id="skills-heading">Core Competencies</h2>
       <div class="skills-grid">
         <div class="skill"><i class="fas fa-brain"></i><span>AI &amp; Machine Learning</span></div>
         <div class="skill"><i class="fas fa-chart-line"></i><span>Digital Transformation Strategy</span></div>
