@@ -1956,10 +1956,10 @@
           background: white;
           color: #333;
           font-family: Arial, sans-serif;
-          padding: 20px;
-          line-height: 1.4;
-          font-size: 11px;
-          max-width: 750px;
+          padding: 15px;
+          line-height: 1.3;
+          font-size: 10px;
+          max-width: 720px;
           margin: 0 auto;
         `;
         
@@ -1968,214 +1968,139 @@
         
         tempContainer.innerHTML = `
           <!-- Header with Photo -->
-          <div style="display: flex; align-items: center; margin-bottom: 15px; border-bottom: 2px solid #0ba5ec; padding-bottom: 12px;">
-            <div style="flex: 0 0 100px; margin-right: 20px;">
-              ${profileImg ? `<img src="${profileImg.src}" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 2px solid #0ba5ec;">` : ''}
+          <div style="display: flex; align-items: center; margin-bottom: 10px; border-bottom: 2px solid #0ba5ec; padding-bottom: 8px;">
+            <div style="flex: 0 0 80px; margin-right: 15px;">
+              ${profileImg ? `<img src="${profileImg.src}" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 2px solid #0ba5ec;">` : ''}
             </div>
             <div style="flex: 1;">
-              <h1 style="font-size: 22px; color: #333; margin: 0 0 6px 0; font-weight: bold;">Pavlos Polydoras</h1>
-              <h2 style="font-size: 14px; color: #0ba5ec; margin: 0 0 8px 0; font-weight: normal;">Digital Transformation & AI-Driven Data Leader</h2>
-              <p style="font-size: 10px; color: #333; margin: 0 0 8px 0; line-height: 1.4;">
-                Executive technology leader with 20 years' experience delivering secure, scalable systems across research, government and enterprise sectors. Passionate about harnessing data and artificial intelligence to unlock new possibilities.
+              <h1 style="font-size: 18px; color: #333; margin: 0 0 4px 0; font-weight: bold;">Pavlos Polydoras</h1>
+              <h2 style="font-size: 12px; color: #0ba5ec; margin: 0 0 5px 0; font-weight: normal;">Digital Transformation & AI-Driven Data Leader</h2>
+              <p style="font-size: 9px; color: #333; margin: 0 0 5px 0; line-height: 1.3;">
+                Executive technology leader with 20 years' experience delivering secure, scalable systems across research, government and enterprise sectors.
               </p>
-              <div style="font-size: 9px; color: #666;">
-                <div>📧 p.polydoras@yahoo.gr</div>
-                <div>📍 Athens, Greece</div>
-                <div>💼 LinkedIn: linkedin.com/in/ppolydoras</div>
-                <div>💻 GitHub: github.com/ppolydoras (1k+ contributions/year)</div>
+              <div style="font-size: 8px; color: #666; display: flex; flex-wrap: wrap; gap: 8px;">
+                <span>📧 p.polydoras@yahoo.gr</span>
+                <span>📍 Athens, Greece</span>
+                <span>💼 linkedin.com/in/ppolydoras</span>
+                <span>💻 github.com/ppolydoras</span>
               </div>
             </div>
           </div>
 
           <!-- About -->
-          <div style="margin-bottom: 15px;">
-            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 8px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">About</h3>
-            <p style="font-size: 10px; margin: 0 0 8px 0; line-height: 1.4; text-align: justify;">
-              I've spent twenty years building systems that matter – from EU research platforms handling cross-border data exchange to real-time analytics processing millions of social posts daily. Today I architect agentic AI platforms at enterprise scale, translating between engineering teams and executives to bridge the gap between AI ambition and production reality.
-            </p>
-            <p style="font-size: 10px; margin: 0; line-height: 1.4; text-align: justify;">
-              I've built and scaled teams from Athens to Seoul, but I still write code every week. I don't ask my teams to do anything I wouldn't do myself.
+          <div style="margin-bottom: 10px;">
+            <h3 style="font-size: 11px; color: #0ba5ec; margin: 0 0 5px 0; font-weight: bold; border-bottom: 1px solid #0ba5ec; padding-bottom: 2px;">About</h3>
+            <p style="font-size: 9px; margin: 0; line-height: 1.3; text-align: justify;">
+              Twenty years building systems that matter – from EU research platforms to real-time analytics processing millions of social posts daily. Today I architect agentic AI platforms at enterprise scale, bridging the gap between AI ambition and production reality. Built and scaled teams from Athens to Seoul, but still write code every week.
             </p>
           </div>
 
           <!-- Experience -->
-          <div style="margin-bottom: 18px;">
-            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 10px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">Experience</h3>
+          <div style="margin-bottom: 10px;">
+            <h3 style="font-size: 11px; color: #0ba5ec; margin: 0 0 6px 0; font-weight: bold; border-bottom: 1px solid #0ba5ec; padding-bottom: 2px;">Experience</h3>
             
-            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
-              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Lead Data & AI Architect – Holisticon Poland</div>
-              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Oct 2025 – Present</div>
-              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Designing and leading the architecture of agentic data & AI platform. Working closely with cross-functional teams to turn business needs into production-grade AI solutions, from early PoCs to robust, scalable systems.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Architect and lead development of agentic AI platforms for enterprise clients.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Design scalable data architectures supporting AI/ML workflows and real-time analytics.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Collaborate with cross-functional teams to deliver production-grade AI solutions.</div>
-              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Guide projects from concept through PoC to production deployment.</div>
-              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: Python, GCP (Cloud Run, Vertex AI, BigQuery, Cloud Storage, IAM), ADK (Agent Development Kit), OpenAI APIs, Claude APIs, Vector Databases, MCP, Docker, Data Architecture, AI/ML Platforms</div>
-              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: GE Appliances AI Labs Platform</div>
+            <div style="margin-bottom: 8px; border-left: 2px solid #0ba5ec; padding-left: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 1px; color: #333;">Lead Data & AI Architect – Holisticon Poland <span style="font-weight: normal; color: #0ba5ec; font-size: 8px;">Oct 2025 – Present</span></div>
+              <div style="font-size: 8px; margin-bottom: 3px; line-height: 1.2;">Architect agentic AI platforms for enterprise clients. Design scalable data architectures for AI/ML workflows. Guide projects from concept through PoC to production.</div>
+              <div style="font-size: 7px; color: #666; background: #f5f5f5; padding: 2px 4px; border-radius: 2px;">Tech: Python, GCP (Vertex AI, BigQuery, Cloud Run), ADK, OpenAI/Claude APIs, Vector DBs, MCP, Docker | Project: GE Appliances AI Labs</div>
             </div>
 
-            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
-              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">VP of Engineering & General Manager, Greece – RAW Labs</div>
-              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Jul 2021 – Nov 2025</div>
-              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Lead creation of chat and analytics services built on client data using MXCP, RAW Labs' MCP framework. Guide projects from POC through SOW, design, implementation and delivery.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Architect AI models and agent‑based applications aligned with customer objectives.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Coordinate engineering teams and manage stakeholder relationships.</div>
-              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Develop business proposals and go‑to‑market strategies for MXCP‑based services.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Set up and manage the Greece company branch, including operations, hiring, budgeting and compliance.</div>
-              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Led cross-functional teams across multiple international projects, delivering enterprise AI solutions for major clients.</div>
-              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: Python, Scala, Java, AWS (Expert), GCP (Basic), Azure (Basic), LangChain, OpenAI APIs, Vector Databases, MCP/MXCP, Data Connectors, Identity & Access Management (Keycloak, Auth0)</div>
-              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: Vodafone Site Ranking System, Swiss Statistics Office Smart Search, UAE National Economic Register</div>
+            <div style="margin-bottom: 8px; border-left: 2px solid #0ba5ec; padding-left: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 1px; color: #333;">VP of Engineering & GM Greece – RAW Labs <span style="font-weight: normal; color: #0ba5ec; font-size: 8px;">Jul 2021 – Nov 2025</span></div>
+              <div style="font-size: 8px; margin-bottom: 3px; line-height: 1.2;">Led AI/analytics services using MXCP framework. Architected agent-based applications. Set up and managed Greece branch (operations, hiring, budgeting). Led cross-functional teams delivering enterprise AI solutions.</div>
+              <div style="font-size: 7px; color: #666; background: #f5f5f5; padding: 2px 4px; border-radius: 2px;">Tech: Python, Scala, Java, AWS, GCP, LangChain, OpenAI, MCP/MXCP, Keycloak, Auth0 | Projects: Vodafone, Swiss Stats, UAE Register</div>
             </div>
 
-            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
-              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Chief Technology Officer – Palowise</div>
-              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Jan 2019 – Jun 2021</div>
-              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Oversaw all technical operations for Palowise, a SaaS platform delivering real‑time social and web analytics. Led the transition from PaloPro to Palowise, expanding the platform's capabilities and market reach.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Designed scalable ingestion pipelines processing millions of social media posts daily with multilingual NLP models.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Built analytics dashboards providing customized insights.</div>
-              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Mentored engineering teams and aligned technology roadmap with business goals.</div>
-              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: Python, Scala, Apache Spark, Elasticsearch, Apache Kafka, Node.js, PostgreSQL, Docker, Kubernetes, AWS (EC2, RDS, ElastiCache)</div>
-              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: palo.gr PaloPro Analytics Platform, Cosmote Social Observability Platform</div>
+            <div style="margin-bottom: 8px; border-left: 2px solid #0ba5ec; padding-left: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 1px; color: #333;">CTO – Palowise <span style="font-weight: normal; color: #0ba5ec; font-size: 8px;">Jan 2019 – Jun 2021</span></div>
+              <div style="font-size: 8px; margin-bottom: 3px; line-height: 1.2;">SaaS platform for real-time social analytics. Designed pipelines processing millions of posts daily. Built analytics dashboards. Mentored teams.</div>
+              <div style="font-size: 7px; color: #666; background: #f5f5f5; padding: 2px 4px; border-radius: 2px;">Tech: Python, Scala, Spark, Elasticsearch, Kafka, K8s, AWS | Projects: PaloPro, Cosmote Social Platform</div>
             </div>
 
-            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
-              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Senior Software Architect – Benefits Science</div>
-              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Apr 2014 – Dec 2018</div>
-              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Technical lead for analytics platform enabling employers and consultants to optimize benefits plans.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Designed & implemented a distributed Data Lake and Big Data ETL services.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Directed new client development and automation initiatives.</div>
-              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Built scalable analytics infrastructure serving enterprise clients.</div>
-              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: Java, Scala, Apache Spark, Databricks, AWS (EC2, Lambda, EMR, S3, RDS, Redshift, Athena, QuickSight, Glue, Data Pipeline, KMS, IAM), PostgreSQL, Python</div>
+            <div style="margin-bottom: 8px; border-left: 2px solid #0ba5ec; padding-left: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 1px; color: #333;">Sr. Software Architect – Benefits Science <span style="font-weight: normal; color: #0ba5ec; font-size: 8px;">Apr 2014 – Dec 2018</span></div>
+              <div style="font-size: 8px; margin-bottom: 3px; line-height: 1.2;">Analytics platform for benefits optimization. Built Data Lake and Big Data ETL services. Scalable analytics infrastructure.</div>
+              <div style="font-size: 7px; color: #666; background: #f5f5f5; padding: 2px 4px; border-radius: 2px;">Tech: Java, Scala, Spark, Databricks, AWS (EC2, Lambda, EMR, S3, Redshift, Athena, Glue)</div>
             </div>
 
-            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
-              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Senior Software Architect – UBITECH</div>
-              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Sep 2010 – Mar 2014</div>
-              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Developed secure, high‑availability platforms for cross‑border civil‑status data exchange projects.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Led core software, security and infrastructure design for RENAPER and ICCS‑CIEC initiatives.</div>
-              <div style="font-size: 8px; margin-bottom: 2px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Implemented PKI‑based authentication and encryption schemes.</div>
-              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Designed enterprise-grade security solutions for government systems.</div>
-              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: JavaEE, EJBCA, jBPM, PKI, Cryptography, Oracle Database, JBoss, Spring Framework, Web Services (SOAP/REST), Apache Tomcat</div>
-              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: RENAPER Initiative, ICCS-CIEC Data Exchange</div>
+            <div style="margin-bottom: 8px; border-left: 2px solid #0ba5ec; padding-left: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 1px; color: #333;">Sr. Software Architect – UBITECH <span style="font-weight: normal; color: #0ba5ec; font-size: 8px;">Sep 2010 – Mar 2014</span></div>
+              <div style="font-size: 8px; margin-bottom: 3px; line-height: 1.2;">Secure platforms for cross-border civil-status data exchange. PKI authentication, enterprise security for government.</div>
+              <div style="font-size: 7px; color: #666; background: #f5f5f5; padding: 2px 4px; border-radius: 2px;">Tech: JavaEE, EJBCA, jBPM, PKI, Oracle | Projects: RENAPER, ICCS-CIEC</div>
             </div>
 
-            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
-              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Software Developer – Hellenic Army</div>
-              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Mar 2010 – Nov 2010</div>
-              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Designed and implemented software solutions and compiled technical reports for critical information systems during national service.</div>
-              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: Java, C#, .NET Framework, SQL Server, Oracle Database, System Analysis & Design</div>
+            <div style="margin-bottom: 8px; border-left: 2px solid #0ba5ec; padding-left: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 1px; color: #333;">Software Developer – Hellenic Army <span style="font-weight: normal; color: #0ba5ec; font-size: 8px;">Mar 2010 – Nov 2010</span></div>
+              <div style="font-size: 7px; color: #666; background: #f5f5f5; padding: 2px 4px; border-radius: 2px;">Tech: Java, C#, .NET, SQL Server, Oracle</div>
             </div>
 
-            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
-              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Software Developer & Researcher – University of Athens</div>
-              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Nov 2005 – Feb 2010</div>
-              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Systems architect and developer on EU research projects in information retrieval, service composition and query optimization.</div>
-              <div style="font-size: 8px; margin-bottom: 3px; padding-left: 8px; position: relative;"><span style="position: absolute; left: 0;">•</span>Contributed to D4Science, D4Science‑II, Health‑e‑Child, DILIGENT and DL.org initiatives.</div>
-              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: Java, XML, Web Services (SOAP), Grid Computing, Information Retrieval Systems, PostgreSQL, Apache Axis, Eclipse RCP</div>
-              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: D4Science Platform, Health-e-Child, DILIGENT, DL.org</div>
+            <div style="margin-bottom: 8px; border-left: 2px solid #0ba5ec; padding-left: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 1px; color: #333;">Software Developer & Researcher – University of Athens <span style="font-weight: normal; color: #0ba5ec; font-size: 8px;">Nov 2005 – Feb 2010</span></div>
+              <div style="font-size: 8px; margin-bottom: 3px; line-height: 1.2;">EU research projects: D4Science, Health-e-Child, DILIGENT, DL.org. Information retrieval, service composition.</div>
+              <div style="font-size: 7px; color: #666; background: #f5f5f5; padding: 2px 4px; border-radius: 2px;">Tech: Java, XML, SOAP, Grid Computing, PostgreSQL</div>
             </div>
 
-            <div style="margin-bottom: 12px; border-left: 3px solid #0ba5ec; padding-left: 12px;">
-              <div style="font-size: 11px; font-weight: bold; margin-bottom: 3px; color: #333;">Software Developer – Synastria Technologies</div>
-              <div style="font-size: 9px; color: #0ba5ec; margin-bottom: 5px; font-weight: 500;">Jan 2007 – Jan 2008</div>
-              <div style="font-size: 9px; margin-bottom: 5px; line-height: 1.3;">Developed BIRonet Virtual Office web application for business process management and collaboration.</div>
-              <div style="font-size: 8px; color: #666; margin-bottom: 3px; background: #f5f5f5; padding: 3px 6px; border-radius: 3px;">Technologies: JavaEE, JMS, Hibernate, MySQL, VMWare, Apache Tomcat, JSF, Spring Framework</div>
-              <div style="font-size: 8px; color: #0ba5ec; font-weight: 500;">Key Projects: BIRonet Virtual Office</div>
+            <div style="margin-bottom: 6px; border-left: 2px solid #0ba5ec; padding-left: 8px;">
+              <div style="font-size: 10px; font-weight: bold; margin-bottom: 1px; color: #333;">Software Developer – Synastria Technologies <span style="font-weight: normal; color: #0ba5ec; font-size: 8px;">Jan 2007 – Jan 2008</span></div>
+              <div style="font-size: 7px; color: #666; background: #f5f5f5; padding: 2px 4px; border-radius: 2px;">Tech: JavaEE, JMS, Hibernate, MySQL | Project: BIRonet Virtual Office</div>
             </div>
           </div>
 
           <!-- Core Competencies -->
-          <div style="margin-bottom: 18px;">
-            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 10px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">Core Competencies</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">AI & Machine Learning</div>
-              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Digital Transformation Strategy</div>
-              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Team Leadership & Mentoring</div>
-              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Data Architecture & Integration</div>
-              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Distributed Systems</div>
-              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Cloud Platforms & Microservices</div>
-              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Big Data & ETL</div>
-              <div style="font-size: 9px; padding: 4px 8px; background: #f0f8ff; border-radius: 4px; border-left: 3px solid #0ba5ec;">Security & PKI</div>
+          <div style="margin-bottom: 10px;">
+            <h3 style="font-size: 11px; color: #0ba5ec; margin: 0 0 5px 0; font-weight: bold; border-bottom: 1px solid #0ba5ec; padding-bottom: 2px;">Core Competencies</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 4px;">
+              <div style="font-size: 8px; padding: 3px 5px; background: #f0f8ff; border-radius: 3px; border-left: 2px solid #0ba5ec;">AI & ML</div>
+              <div style="font-size: 8px; padding: 3px 5px; background: #f0f8ff; border-radius: 3px; border-left: 2px solid #0ba5ec;">Digital Transformation</div>
+              <div style="font-size: 8px; padding: 3px 5px; background: #f0f8ff; border-radius: 3px; border-left: 2px solid #0ba5ec;">Team Leadership</div>
+              <div style="font-size: 8px; padding: 3px 5px; background: #f0f8ff; border-radius: 3px; border-left: 2px solid #0ba5ec;">Data Architecture</div>
+              <div style="font-size: 8px; padding: 3px 5px; background: #f0f8ff; border-radius: 3px; border-left: 2px solid #0ba5ec;">Distributed Systems</div>
+              <div style="font-size: 8px; padding: 3px 5px; background: #f0f8ff; border-radius: 3px; border-left: 2px solid #0ba5ec;">Cloud & Microservices</div>
+              <div style="font-size: 8px; padding: 3px 5px; background: #f0f8ff; border-radius: 3px; border-left: 2px solid #0ba5ec;">Big Data & ETL</div>
+              <div style="font-size: 8px; padding: 3px 5px; background: #f0f8ff; border-radius: 3px; border-left: 2px solid #0ba5ec;">Security & PKI</div>
             </div>
           </div>
 
           <!-- Technical Expertise -->
-          <div style="margin-bottom: 12px;">
-            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 8px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">Technical Expertise</h3>
-            
-            <div style="margin-bottom: 6px;">
-              <div style="font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #0ba5ec;">Cloud & Infrastructure</div>
-              <div style="font-size: 8px; line-height: 1.3; color: #555;">AWS (Expert), GCP (Expert: Cloud Run, Vertex AI, BigQuery, Cloud Storage, IAM), Azure (Basic), Docker, Docker Compose, Kubernetes</div>
-            </div>
-            
-            <div style="margin-bottom: 6px;">
-              <div style="font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #0ba5ec;">Programming & Frameworks</div>
-              <div style="font-size: 8px; line-height: 1.3; color: #555;">Python, Scala, Java, Apache Spark, JavaEE, Spring, Node.js</div>
-            </div>
-            
-            <div style="margin-bottom: 6px;">
-              <div style="font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #0ba5ec;">Data & AI</div>
-              <div style="font-size: 8px; line-height: 1.3; color: #555;">ADK (Agent Development Kit), LangChain, OpenAI APIs, Claude APIs, Vector Databases, MCP (Model Context Protocol), ETL Pipelines, ML/AI Integration, Data Lake Architecture, Real-time Analytics</div>
-            </div>
-            
-            <div style="margin-bottom: 6px;">
-              <div style="font-size: 10px; font-weight: bold; margin-bottom: 4px; color: #0ba5ec;">Security & Enterprise</div>
-              <div style="font-size: 8px; line-height: 1.3; color: #555;">PKI, Cryptography, Keycloak, Auth0, EJBCA, jBPM, Enterprise Architecture, Microservices, System Integration</div>
+          <div style="margin-bottom: 10px;">
+            <h3 style="font-size: 11px; color: #0ba5ec; margin: 0 0 5px 0; font-weight: bold; border-bottom: 1px solid #0ba5ec; padding-bottom: 2px;">Technical Expertise</h3>
+            <div style="font-size: 8px; line-height: 1.3; color: #555;">
+              <strong style="color: #0ba5ec;">Cloud:</strong> AWS (Expert), GCP (Expert), Azure (Basic), Docker, K8s &nbsp;|&nbsp;
+              <strong style="color: #0ba5ec;">Languages:</strong> Python, Scala, Java, Node.js &nbsp;|&nbsp;
+              <strong style="color: #0ba5ec;">AI:</strong> ADK, LangChain, OpenAI/Claude APIs, Vector DBs, MCP &nbsp;|&nbsp;
+              <strong style="color: #0ba5ec;">Security:</strong> PKI, Keycloak, Auth0
             </div>
           </div>
 
-          <!-- Education -->
-          <div style="margin-bottom: 12px;">
-            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 8px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">Education</h3>
-            <div style="font-size: 10px; margin-bottom: 6px; padding: 6px; background: #f9f9f9; border-radius: 4px;">
-              <strong style="color: #0ba5ec;">M.Sc. in Information Technology</strong><br>
-              <span style="font-size: 9px; color: #666;">National & Kapodistrian University of Athens · 2004–2009</span>
+          <!-- Education & Languages -->
+          <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 15px;">
+            <div>
+              <h3 style="font-size: 11px; color: #0ba5ec; margin: 0 0 5px 0; font-weight: bold; border-bottom: 1px solid #0ba5ec; padding-bottom: 2px;">Education</h3>
+              <div style="font-size: 9px; margin-bottom: 3px;"><strong style="color: #0ba5ec;">M.Sc. Information Technology</strong> – Univ. of Athens, 2004–2009</div>
+              <div style="font-size: 9px;"><strong style="color: #0ba5ec;">B.Sc. Computer Science</strong> – Univ. of Athens, 1999–2004</div>
             </div>
-            <div style="font-size: 10px; margin-bottom: 6px; padding: 6px; background: #f9f9f9; border-radius: 4px;">
-              <strong style="color: #0ba5ec;">B.Sc. in Computer Science</strong><br>
-              <span style="font-size: 9px; color: #666;">National & Kapodistrian University of Athens · 1999–2004</span>
-            </div>
-          </div>
-
-          <!-- Languages -->
-          <div class="page-break-avoid" style="margin-bottom: 10px; page-break-inside: avoid;">
-            <h3 style="font-size: 13px; color: #0ba5ec; margin: 0 0 8px 0; font-weight: bold; border-bottom: 2px solid #0ba5ec; padding-bottom: 3px;">Languages</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-              <div style="font-size: 10px; padding: 6px; background: #f0f8ff; border-radius: 4px; text-align: center;">
-                <strong style="color: #0ba5ec;">Greek</strong><br>
-                <span style="font-size: 8px; color: #666;">Native</span>
-              </div>
-              <div style="font-size: 10px; padding: 6px; background: #f0f8ff; border-radius: 4px; text-align: center;">
-                <strong style="color: #0ba5ec;">English</strong><br>
-                <span style="font-size: 8px; color: #666;">Fluent</span>
-              </div>
+            <div>
+              <h3 style="font-size: 11px; color: #0ba5ec; margin: 0 0 5px 0; font-weight: bold; border-bottom: 1px solid #0ba5ec; padding-bottom: 2px;">Languages</h3>
+              <div style="font-size: 9px;"><strong style="color: #0ba5ec;">Greek</strong> Native &nbsp;|&nbsp; <strong style="color: #0ba5ec;">English</strong> Fluent</div>
             </div>
           </div>
         `;
         
         // Configure PDF options for 2-page layout
         const options = {
-          margin: [0.4, 0.4, 0.4, 0.4],
+          margin: [0.3, 0.3, 0.3, 0.3],
           filename: 'Pavlos_Polydoras_CV.pdf',
-          image: { type: 'jpeg', quality: 0.95 },
+          image: { type: 'jpeg', quality: 0.9 },
           html2canvas: { 
-            scale: 1.8,
+            scale: 2,
             useCORS: true,
             letterRendering: true,
-            allowTaint: false,
             backgroundColor: '#ffffff'
           },
           jsPDF: { 
             unit: 'in', 
             format: 'a4', 
-            orientation: 'portrait',
-            compress: true
-          },
-          pagebreak: { 
-            mode: ['avoid-all', 'css'],
-            before: '.page-break-before',
-            after: '.page-break-after',
-            avoid: '.page-break-avoid'
+            orientation: 'portrait'
           }
         };
         
