@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pavlos Polydoras - CV</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 0.5in;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.4;
+      color: #333;
+      background: white;
+      max-width: 8.27in;
+      margin: 0 auto;
+      padding: 0.5in;
+    }
+    
+    /* Header */
+    .header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #0077b6;
+    }
+    
+    .photo {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #0077b6;
+      margin-right: 20px;
+    }
+    
+    .header-content h1 {
+      font-size: 22pt;
+      color: #333;
+      margin-bottom: 4px;
+    }
+    
+    .header-content h2 {
+      font-size: 12pt;
+      color: #0077b6;
+      font-weight: normal;
+      margin-bottom: 8px;
+    }
+    
+    .header-content .tagline {
+      font-size: 10pt;
+      color: #444;
+      margin-bottom: 8px;
+    }
+    
+    .contact-row {
+      font-size: 9pt;
+      color: #555;
+    }
+    
+    .contact-row span {
+      margin-right: 15px;
+    }
+    
+    /* Section headers */
+    h3 {
+      font-size: 12pt;
+      color: #0077b6;
+      margin: 18px 0 10px 0;
+      padding-bottom: 4px;
+      border-bottom: 2px solid #0077b6;
+    }
+    
+    /* About */
+    .about p {
+      text-align: justify;
+      margin-bottom: 6px;
+    }
+    
+    /* Experience */
+    .job {
+      margin-bottom: 14px;
+      padding-left: 12px;
+      border-left: 3px solid #0077b6;
+    }
+    
+    .job-title {
+      font-size: 11pt;
+      font-weight: bold;
+      color: #333;
+    }
+    
+    .job-date {
+      font-size: 9pt;
+      color: #0077b6;
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    
+    .job-desc {
+      font-size: 9.5pt;
+      margin-bottom: 6px;
+      color: #444;
+    }
+    
+    .job ul {
+      margin-left: 15px;
+      margin-bottom: 6px;
+    }
+    
+    .job li {
+      font-size: 9pt;
+      margin-bottom: 2px;
+      color: #444;
+    }
+    
+    .tech-box {
+      font-size: 8pt;
+      background: #f5f5f5;
+      padding: 4px 8px;
+      border-radius: 3px;
+      color: #555;
+    }
+    
+    .tech-box strong {
+      color: #333;
+    }
+    
+    .key-project {
+      color: #0077b6;
+      font-weight: 500;
+    }
+    
+    /* Skills Grid */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+    }
+    
+    .skill-item {
+      font-size: 9pt;
+      padding: 6px 8px;
+      background: #e8f4f8;
+      border-left: 3px solid #0077b6;
+      border-radius: 3px;
+      text-align: center;
+    }
+    
+    /* Technical Expertise */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    
+    .tech-category {
+      background: #f9f9f9;
+      padding: 8px 10px;
+      border-radius: 4px;
+    }
+    
+    .tech-category strong {
+      color: #0077b6;
+      font-size: 9.5pt;
+      display: block;
+      margin-bottom: 3px;
+    }
+    
+    .tech-category span {
+      font-size: 8.5pt;
+      color: #555;
+    }
+    
+    /* Education & Languages */
+    .two-col {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      margin-top: 8px;
+    }
+    
+    .edu-item {
+      background: #f9f9f9;
+      padding: 8px 10px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+    }
+    
+    .edu-item strong {
+      color: #0077b6;
+      font-size: 10pt;
+    }
+    
+    .edu-item span {
+      font-size: 9pt;
+      color: #666;
+      display: block;
+    }
+    
+    .lang-item {
+      background: #e8f4f8;
+      padding: 8px 10px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    
+    .lang-item strong {
+      color: #0077b6;
+      font-size: 10pt;
+    }
+    
+    .lang-item span {
+      font-size: 9pt;
+      color: #666;
+      display: block;
+    }
+    
+    /* Page break control */
+    .page-break {
+      page-break-before: always;
+    }
+    
+    @media print {
+      body {
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <img src="https://ppolydoras.github.io/profile.jpg" alt="Pavlos Polydoras" class="photo">
+    <div class="header-content">
+      <h1>Pavlos Polydoras</h1>
+      <h2>Digital Transformation & AI-Driven Data Leader</h2>
+      <p class="tagline">Executive technology leader with 20 years' experience delivering secure, scalable systems across research, government and enterprise sectors. Passionate about harnessing data and AI to unlock new possibilities.</p>
+      <div class="contact-row">
+        <span>📧 p.polydoras@yahoo.gr</span>
+        <span>📍 Athens, Greece</span>
+        <span>💼 linkedin.com/in/ppolydoras</span>
+        <span>💻 github.com/ppolydoras (1k+ contributions/year)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <h3>About</h3>
+  <div class="about">
+    <p>I've spent twenty years building systems that matter – from EU research platforms handling cross-border data exchange to real-time analytics processing millions of social posts daily. Today I architect agentic AI platforms at enterprise scale, translating between engineering teams and executives to bridge the gap between AI ambition and production reality.</p>
+    <p>I've built and scaled teams from Athens to Seoul, but I still write code every week. I don't ask my teams to do anything I wouldn't do myself.</p>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <h3>Experience</h3>
+  
+  <div class="job">
+    <div class="job-title">Lead Data & AI Architect – Holisticon Poland</div>
+    <div class="job-date">Oct 2025 – Present</div>
+    <p class="job-desc">Designing and leading the architecture of agentic data & AI platform. Working closely with cross-functional teams to turn business needs into production-grade AI solutions.</p>
+    <ul>
+      <li>Architect and lead development of agentic AI platforms for enterprise clients</li>
+      <li>Design scalable data architectures supporting AI/ML workflows and real-time analytics</li>
+      <li>Guide projects from concept through PoC to production deployment</li>
+    </ul>
+    <div class="tech-box">
+      <strong>Tech:</strong> Python, GCP (Cloud Run, Vertex AI, BigQuery, Cloud Storage, IAM), ADK, OpenAI/Claude APIs, Vector DBs, MCP, Docker<br>
+      <span class="key-project"><strong>Key Project:</strong> GE Appliances AI Labs Platform</span>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="job-title">VP of Engineering & General Manager, Greece – RAW Labs</div>
+    <div class="job-date">Jul 2021 – Nov 2025</div>
+    <p class="job-desc">Lead creation of chat and analytics services built on client data using MXCP, RAW Labs' MCP framework. Guide projects from POC through SOW, design, implementation and delivery.</p>
+    <ul>
+      <li>Architect AI models and agent-based applications aligned with customer objectives</li>
+      <li>Coordinate engineering teams and manage stakeholder relationships</li>
+      <li>Set up and manage the Greece company branch (operations, hiring, budgeting, compliance)</li>
+      <li>Led cross-functional teams delivering enterprise AI solutions for major clients</li>
+    </ul>
+    <div class="tech-box">
+      <strong>Tech:</strong> Python, Scala, Java, AWS (Expert), GCP, Azure, LangChain, OpenAI, MCP/MXCP, Keycloak, Auth0<br>
+      <span class="key-project"><strong>Key Projects:</strong> Vodafone Site Ranking, Swiss Statistics Smart Search, UAE National Economic Register</span>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="job-title">Chief Technology Officer – Palowise</div>
+    <div class="job-date">Jan 2019 – Jun 2021</div>
+    <p class="job-desc">Oversaw all technical operations for Palowise, a SaaS platform delivering real-time social and web analytics. Led the transition from PaloPro to Palowise.</p>
+    <ul>
+      <li>Designed scalable ingestion pipelines processing millions of social media posts daily with multilingual NLP</li>
+      <li>Built analytics dashboards providing customized insights for enterprise clients</li>
+      <li>Mentored engineering teams and aligned technology roadmap with business goals</li>
+    </ul>
+    <div class="tech-box">
+      <strong>Tech:</strong> Python, Scala, Spark, Elasticsearch, Kafka, PostgreSQL, Docker, Kubernetes, AWS<br>
+      <span class="key-project"><strong>Key Projects:</strong> PaloPro Analytics Platform, palo.gr, Cosmote Social Observability</span>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="job-title">Senior Software Architect – Benefits Science</div>
+    <div class="job-date">Apr 2014 – Dec 2018</div>
+    <p class="job-desc">Technical lead for analytics platform enabling employers and consultants to optimize benefits plans.</p>
+    <ul>
+      <li>Designed & implemented a distributed Data Lake and Big Data ETL services</li>
+      <li>Built scalable analytics infrastructure serving enterprise clients</li>
+    </ul>
+    <div class="tech-box">
+      <strong>Tech:</strong> Java, Scala, Spark, Databricks, AWS (EC2, Lambda, EMR, S3, RDS, Redshift, Athena, QuickSight, Glue), PostgreSQL, Python
+    </div>
+  </div>
+
+  <!-- PAGE 2 -->
+  <div class="page-break"></div>
+
+  <div class="job">
+    <div class="job-title">Senior Software Architect – UBITECH</div>
+    <div class="job-date">Sep 2010 – Mar 2014</div>
+    <p class="job-desc">Developed secure, high-availability platforms for cross-border civil-status data exchange projects.</p>
+    <ul>
+      <li>Led core software, security and infrastructure design for RENAPER and ICCS-CIEC initiatives</li>
+      <li>Implemented PKI-based authentication and encryption schemes</li>
+    </ul>
+    <div class="tech-box">
+      <strong>Tech:</strong> JavaEE, EJBCA, jBPM, PKI, Cryptography, Oracle, JBoss, Spring, Web Services<br>
+      <span class="key-project"><strong>Key Projects:</strong> RENAPER Data Exchange, ICCS-CIEC</span>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="job-title">Software Developer – Hellenic Army</div>
+    <div class="job-date">Mar 2010 – Nov 2010</div>
+    <p class="job-desc">Designed and implemented software solutions for critical information systems during national service.</p>
+    <div class="tech-box">
+      <strong>Tech:</strong> Java, C#, .NET Framework, SQL Server, Oracle, System Analysis & Design
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="job-title">Software Developer & Researcher – University of Athens</div>
+    <div class="job-date">Nov 2005 – Feb 2010</div>
+    <p class="job-desc">Systems architect and developer on EU research projects in information retrieval, service composition and query optimization.</p>
+    <ul>
+      <li>Contributed to D4Science, D4Science-II, Health-e-Child, DILIGENT and DL.org initiatives</li>
+    </ul>
+    <div class="tech-box">
+      <strong>Tech:</strong> Java, XML, Web Services (SOAP), Grid Computing, PostgreSQL, Eclipse RCP<br>
+      <span class="key-project"><strong>Key Projects:</strong> D4Science Platform, Health-e-Child, DILIGENT, DL.org</span>
+    </div>
+  </div>
+
+  <div class="job">
+    <div class="job-title">Software Developer – Synastria Technologies</div>
+    <div class="job-date">Jan 2007 – Jan 2008</div>
+    <p class="job-desc">Developed BIRonet Virtual Office web application for business process management and collaboration.</p>
+    <div class="tech-box">
+      <strong>Tech:</strong> JavaEE, JMS, Hibernate, MySQL, VMWare, JSF, Spring<br>
+      <span class="key-project"><strong>Key Project:</strong> BIRonet Virtual Office</span>
+    </div>
+  </div>
+
+  <!-- CORE COMPETENCIES -->
+  <h3>Core Competencies</h3>
+  <div class="skills-grid">
+    <div class="skill-item">AI & Machine Learning</div>
+    <div class="skill-item">Digital Transformation</div>
+    <div class="skill-item">Team Leadership</div>
+    <div class="skill-item">Data Architecture</div>
+    <div class="skill-item">Distributed Systems</div>
+    <div class="skill-item">Cloud & Microservices</div>
+    <div class="skill-item">Big Data & ETL</div>
+    <div class="skill-item">Security & PKI</div>
+  </div>
+
+  <!-- TECHNICAL EXPERTISE -->
+  <h3>Technical Expertise</h3>
+  <div class="tech-grid">
+    <div class="tech-category">
+      <strong>Cloud & Infrastructure</strong>
+      <span>AWS (Expert), GCP (Expert: Cloud Run, Vertex AI, BigQuery, Cloud Storage, IAM), Azure (Basic), Docker, Docker Compose, Kubernetes</span>
+    </div>
+    <div class="tech-category">
+      <strong>Programming & Frameworks</strong>
+      <span>Python, Scala, Java, Apache Spark, JavaEE, Spring, Node.js</span>
+    </div>
+    <div class="tech-category">
+      <strong>Data & AI</strong>
+      <span>ADK (Agent Development Kit), LangChain, OpenAI/Claude APIs, Vector Databases, MCP, ETL Pipelines, ML/AI Integration, Data Lake Architecture</span>
+    </div>
+    <div class="tech-category">
+      <strong>Security & Enterprise</strong>
+      <span>PKI, Cryptography, Keycloak, Auth0, EJBCA, jBPM, Enterprise Architecture, Microservices</span>
+    </div>
+  </div>
+
+  <!-- EDUCATION & LANGUAGES -->
+  <div class="two-col">
+    <div>
+      <h3>Education</h3>
+      <div class="edu-item">
+        <strong>M.Sc. in Information Technology</strong>
+        <span>National & Kapodistrian University of Athens · 2004–2009</span>
+      </div>
+      <div class="edu-item">
+        <strong>B.Sc. in Computer Science</strong>
+        <span>National & Kapodistrian University of Athens · 1999–2004</span>
+      </div>
+    </div>
+    <div>
+      <h3>Languages</h3>
+      <div class="lang-item">
+        <strong>Greek</strong>
+        <span>Native</span>
+      </div>
+      <div class="lang-item">
+        <strong>English</strong>
+        <span>Fluent</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
