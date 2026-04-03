@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pavlos Polydoras · Lead Data & AI Architect | Portfolio</title>
   <meta name="description" content="Lead Data & AI Architect with 20+ years of experience in cloud infrastructure, distributed systems, and AI-powered analytics. Expert in AWS, GCP, LangChain, and enterprise AI platforms.">
-  <meta name="keywords" content="Data Architect, AI Architect, Cloud Computing, AWS, GCP, LangChain, Machine Learning, Software Architecture, Digital Transformation, Enterprise AI">
+  <meta name="keywords" content="Data Architect, AI Architect, Cloud Computing, AWS, GCP, MCP, ADK, Agentic AI, LangChain, Machine Learning, Software Architecture, Digital Transformation, Enterprise AI, Platform Engineering">
   <meta name="author" content="Pavlos Polydoras">
   
   <!-- Open Graph / Facebook -->
@@ -1433,7 +1433,7 @@
         <img src="img/profile.jpeg" alt="Pavlos Polydoras" class="avatar" loading="lazy" fetchpriority="high">
         <div class="description">
           <p>
-            I've spent twenty years building systems that matter – from EU research platforms handling cross-border data exchange to real-time analytics processing millions of social posts daily. Today I architect agentic AI platforms at enterprise scale, translating between engineering teams and executives to bridge the gap between AI ambition and production reality.
+            I've spent twenty years building systems that matter – from EU research platforms handling cross-border data exchange to real-time analytics processing millions of social posts daily. Today I architect enterprise AI platforms that let entire organizations build their own AI-powered automations – designing the gateways, identity layers, agent frameworks, and MCP infrastructure that make self-service AI possible at scale.
           </p>
           <p>
             I've built and scaled teams from Athens to Seoul, but I still write code every week. I don't ask my teams to do anything I wouldn't do myself.
@@ -1453,20 +1453,24 @@
           <h3>Lead Data &amp; AI Architect – Holisticon Poland</h3>
           <h4>Oct&nbsp;2025 – Present</h4>
           <p>
-            Designing and leading the architecture of agentic data &amp; AI platform. Working closely with cross-functional teams to turn business needs into production-grade AI solutions, from early PoCs to robust, scalable systems.
+            Technical architecture lead for GE Appliances' enterprise AI platform — a self-service system enabling any employee to build AI-powered automations via N8N workflows, MCP servers, and ADK agents. Leading a cross-functional team of ~10 engineers across architecture, security, voice AI, and agent development.
           </p>
           <ul>
-            <li>Architect and lead development of agentic AI platforms for enterprise clients.</li>
-            <li>Design scalable data architectures supporting AI/ML workflows and real-time analytics.</li>
-            <li>Collaborate with cross-functional teams to deliver production-grade AI solutions.</li>
-            <li>Guide projects from concept through PoC to production deployment.</li>
+            <li>Designed the Unified Platform Gateway architecture — single entry point for agents, MCP servers, and LLMs with Okta/Auth0 identity, scope-based authorization, and unified audit trail.</li>
+            <li>Authored enterprise ADK Agent and MCP Server template foundations, standardizing how the team builds and deploys AI components to Cloud Run and Vertex AI Agent Engine.</li>
+            <li>Designed and implemented CI/CD pipelines for both ADK agents (Vertex AI) and MCP servers (Cloud Run), including security scans and governance checks.</li>
+            <li>Led PI Planning sessions (Release 1: 20 weeks, 10 sprints, 6 epics) driving gateway evaluation (LiteLLM vs TrueFoundry vs MuleSoft), identity architecture, and MCP governance.</li>
+            <li>Authored comprehensive security architecture integrating Okta SSO, OIDC multi-issuer validation, Workload Identity Federation, and service-to-service authentication.</li>
+            <li>Established and maintain the platform knowledge base (architecture decisions, runbooks, specifications, meeting records) as the single source of truth.</li>
           </ul>
           <div class="tech-stack">
-            <strong>🔧 Key Technologies:</strong> Python, GCP (Cloud Run, Vertex AI, BigQuery, Cloud Storage, IAM), ADK (Agent Development Kit), OpenAI APIs, Claude APIs, Vector Databases, MCP, Docker, Data Architecture, AI/ML Platforms
+            <strong>🔧 Key Technologies:</strong> Python, GCP (Cloud Run, Vertex AI Agent Engine, BigQuery, Cloud Storage, IAM), Google ADK, N8N, MCP, A2A Protocol, Okta/Auth0, OIDC/JWT, LiteLLM, OpenAI/Gemini/Claude APIs, Gemini Live API (Voice), OpenTelemetry, Docker, Workload Identity Federation
           </div>
           <div class="key-projects">
             <strong>🚀 Key Projects:</strong>
-            <span class="project-tag">GE Appliances AI Labs Platform</span>
+            <span class="project-tag">GEA Enterprise AI Control Plane</span>
+            <span class="project-tag">RITA HR Interview Platform</span>
+            <span class="project-tag">Unified Platform Gateway</span>
           </div>
         </div>
         <div class="timeline-item">
@@ -1602,14 +1606,14 @@
     <section id="skills" aria-labelledby="skills-heading">
       <h2 id="skills-heading">Core Competencies</h2>
       <div class="skills-grid">
-        <div class="skill"><i class="fas fa-brain"></i><span>AI &amp; Machine Learning</span></div>
+        <div class="skill"><i class="fas fa-brain"></i><span>Agentic AI &amp; ML Platforms</span></div>
         <div class="skill"><i class="fas fa-chart-line"></i><span>Digital Transformation Strategy</span></div>
         <div class="skill"><i class="fas fa-users"></i><span>Team Leadership &amp; Mentoring</span></div>
         <div class="skill"><i class="fas fa-database"></i><span>Data Architecture &amp; Integration</span></div>
-        <div class="skill"><i class="fas fa-network-wired"></i><span>Distributed Systems</span></div>
+        <div class="skill"><i class="fas fa-network-wired"></i><span>Platform &amp; Gateway Design</span></div>
         <div class="skill"><i class="fas fa-cloud"></i><span>Cloud Platforms &amp; Microservices</span></div>
         <div class="skill"><i class="fas fa-layer-group"></i><span>Big Data &amp; ETL</span></div>
-        <div class="skill"><i class="fas fa-shield-alt"></i><span>Security &amp; PKI</span></div>
+        <div class="skill"><i class="fas fa-shield-alt"></i><span>Identity &amp; Security Architecture</span></div>
       </div>
     </section>
 
@@ -1633,11 +1637,12 @@
           <div class="tech-list">
             <span class="tech-item">AWS (Expert)</span>
             <span class="tech-item">GCP (Expert)</span>
-            <span class="tech-item">GCP Services (Cloud Run, Vertex AI, BigQuery)</span>
+            <span class="tech-item">Cloud Run, Vertex AI Agent Engine, BigQuery</span>
             <span class="tech-item">Azure (Basic)</span>
             <span class="tech-item">Docker</span>
-            <span class="tech-item">Docker Compose</span>
             <span class="tech-item">Kubernetes</span>
+            <span class="tech-item">Workload Identity Federation</span>
+            <span class="tech-item">OpenTelemetry</span>
           </div>
         </div>
         <div class="expertise-category">
@@ -1647,32 +1652,34 @@
             <span class="tech-item">Apache Spark</span>
             <span class="tech-item">JavaEE, Spring</span>
             <span class="tech-item">Node.js</span>
+            <span class="tech-item">N8N Workflow Orchestration</span>
           </div>
         </div>
         <div class="expertise-category">
           <h3><i class="fas fa-database"></i>Data & AI</h3>
           <div class="tech-list">
-            <span class="tech-item">ADK (Agent Development Kit)</span>
+            <span class="tech-item">Google ADK (Agent Development Kit)</span>
             <span class="tech-item">LangChain</span>
-            <span class="tech-item">OpenAI APIs</span>
-            <span class="tech-item">Claude APIs</span>
-            <span class="tech-item">Vector Databases</span>
+            <span class="tech-item">OpenAI / Gemini / Claude APIs</span>
+            <span class="tech-item">Gemini Live API (Voice)</span>
             <span class="tech-item">MCP (Model Context Protocol)</span>
-            <span class="tech-item">ETL Pipelines</span>
-            <span class="tech-item">ML/AI Integration</span>
-            <span class="tech-item">Data Lake Architecture</span>
-            <span class="tech-item">Real-time Analytics</span>
+            <span class="tech-item">A2A (Agent-to-Agent) Protocol</span>
+            <span class="tech-item">LiteLLM</span>
+            <span class="tech-item">Vector Databases</span>
+            <span class="tech-item">DeepEval</span>
+            <span class="tech-item">ETL Pipelines &amp; Data Lake Architecture</span>
           </div>
         </div>
         <div class="expertise-category">
           <h3><i class="fas fa-shield-alt"></i>Security & Enterprise</h3>
           <div class="tech-list">
+            <span class="tech-item">Okta SSO, Auth0</span>
+            <span class="tech-item">OIDC / JWT / OAuth2</span>
             <span class="tech-item">PKI, Cryptography</span>
-            <span class="tech-item">Keycloak, Auth0</span>
-            <span class="tech-item">EJBCA, jBPM</span>
+            <span class="tech-item">Keycloak</span>
             <span class="tech-item">Enterprise Architecture</span>
             <span class="tech-item">Microservices</span>
-            <span class="tech-item">System Integration</span>
+            <span class="tech-item">API Gateway Design</span>
           </div>
         </div>
       </div>
@@ -1734,16 +1741,16 @@
   </div>
 
   <footer>
-    © 2025 Pavlos Polydoras · All rights reserved.
+    © 2026 Pavlos Polydoras · All rights reserved.
   </footer>
 
   <script>
     // Typewriter effect
     const typewriterText = [
+      "Enterprise AI Platform Architect",
       "Digital Transformation Leader",
       "AI-Driven Data Expert", 
-      "Technology Executive",
-      "Software Architect"
+      "Technology Executive"
     ];
     let currentText = 0;
     let currentChar = 0;
